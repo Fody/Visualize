@@ -26,6 +26,12 @@ public class ApprovedTests
         Approvals.Verify(Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
     }
 
+    [Test]
+    public void ClassWithICollection()
+    {
+        Approvals.Verify(Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithICollection"));
+    }
+
     //[Test]
     //public void Sample()
     //{
