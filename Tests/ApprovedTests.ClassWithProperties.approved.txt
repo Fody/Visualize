@@ -1,0 +1,133 @@
+﻿
+//  Microsoft (R) .NET Framework IL Disassembler.
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+
+
+// warning : THIS IS A PARTIAL DISASSEMBLY, NOT SUITABLE FOR RE-ASSEMBLING
+
+
+
+.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithProperties
+       extends [mscorlib]System.Object
+{
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 25 4E 75 6D 62 65 72 20 3D 20 7B 4E 75 6D   // ..%Number = {Num
+                                                                                                 62 65 72 7D 20 7C 20 53 74 72 69 6E 67 20 3D 20   // ber} | String = 
+                                                                                                 7B 53 74 72 69 6E 67 7D 00 00 )                   // {String}..
+  .field private int32 '<Number>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .field private string '<String>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .field private string '<Internal>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .method public hidebysig specialname instance int32 
+          get_Number() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       11 (0xb)
+    .maxstack  1
+    .locals init (int32 V_0)
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
+    IL_0006:  stloc.0
+    IL_0007:  br.s       IL_0009
+
+    IL_0009:  ldloc.0
+    IL_000a:  ret
+  } // end of method ClassWithProperties::get_Number
+
+  .method public hidebysig specialname instance void 
+          set_Number(int32 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Number
+
+  .method public hidebysig specialname instance string 
+          get_String() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       11 (0xb)
+    .maxstack  1
+    .locals init (string V_0)
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
+    IL_0006:  stloc.0
+    IL_0007:  br.s       IL_0009
+
+    IL_0009:  ldloc.0
+    IL_000a:  ret
+  } // end of method ClassWithProperties::get_String
+
+  .method public hidebysig specialname instance void 
+          set_String(string 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_String
+
+  .method assembly hidebysig specialname 
+          instance string  get_Internal() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       11 (0xb)
+    .maxstack  1
+    .locals init (string V_0)
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
+    IL_0006:  stloc.0
+    IL_0007:  br.s       IL_0009
+
+    IL_0009:  ldloc.0
+    IL_000a:  ret
+  } // end of method ClassWithProperties::get_Internal
+
+  .method assembly hidebysig specialname 
+          instance void  set_Internal(string 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Internal
+
+  .method public hidebysig specialname rtspecialname 
+          instance void  .ctor() cil managed
+  {
+    // Code size       7 (0x7)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+    IL_0006:  ret
+  } // end of method ClassWithProperties::.ctor
+
+  .property instance int32 Number()
+  {
+    .get instance int32 AssemblyToProcess.ClassWithProperties::get_Number()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Number(int32)
+  } // end of property ClassWithProperties::Number
+  .property instance string String()
+  {
+    .get instance string AssemblyToProcess.ClassWithProperties::get_String()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_String(string)
+  } // end of property ClassWithProperties::String
+  .property instance string Internal()
+  {
+    .get instance string AssemblyToProcess.ClassWithProperties::get_Internal()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Internal(string)
+  } // end of property ClassWithProperties::Internal
+} // end of class AssemblyToProcess.ClassWithProperties
+
+// *********** DISASSEMBLY COMPLETE ***********************
