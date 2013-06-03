@@ -54,6 +54,8 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CecilExtensions.cs" />
+    <Compile Include="DebuggerDisplayInjector.cs" />
+    <Compile Include="DebuggerTypeProxyInjector.cs" />
     <Compile Include="ModuleWeaver.cs" />
     <Compile Include="ReferenceFinder.cs" />
   </ItemGroup>
