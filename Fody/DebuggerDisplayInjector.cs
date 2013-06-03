@@ -10,8 +10,8 @@ public static class DebuggerDisplayInjector
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
             return;
 
-        var fields = type.Fields.Where(f => f.IsPublic && CanPrint(f.DeclaringType)).Cast<MemberReference>();
-        var props = type.Properties.Where(p => p.GetMethod.IsPublic && CanPrint(p.DeclaringType)).Cast<MemberReference>();
+        var fields = type.Fields.Where(f => f.IsPublic && CanPrint(f.FieldType)).Cast<MemberReference>();
+        var props = type.Properties.Where(p => p.GetMethod.IsPublic && CanPrint(p.PropertyType)).Cast<MemberReference>();
 
         var displayBits = fields.Concat(props)
             .OrderBy(m => m.Name)
@@ -39,15 +39,18 @@ public static class DebuggerDisplayInjector
         typeof (byte).Name,
         typeof (sbyte).Name,
         typeof (char).Name,
+        typeof (string).Name,
     };
 
-    private static bool CanPrint(TypeDefinition typeDefinition)
+    private static bool CanPrint(TypeReference typeReference)
     {
-        if (basicNames.Contains(typeDefinition.Name))
+        if (basicNames.Contains(typeReference.Name))
             return true;
 
-        if (typeDefinition.IsArray)
+        if (typeReference.IsArray)
             return false;
+
+        var typeDefinition = typeReference.Resolve();
 
         if (typeDefinition.IsEnum)
             return true;
