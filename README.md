@@ -2,7 +2,7 @@
 
 ![Visualize Icon - An eye](https://raw.github.com/Fody/Visualize/master/Icons/package_icon.png)
 
-Obfuscates your code.
+Adds debugger attributes to help visualize objects.
 
 ## Nuget 
 
@@ -11,6 +11,71 @@ Nuget package http://nuget.org/packages/Visualize.Fody
 To Install from the Nuget Package Manager Console 
     
     PM> Install-Package Visualize.Fody
+
+### Your Code
+
+    public class Example1
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+    }
+
+    public class Example2 : IEnumerable<int>
+    {
+        public IEnumerator<int> GetEnumerator()
+        {
+            return Enumerable.Range(0, 10).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+### What gets compiled
+
+    [DebuggerDisplay("Name = {Name} | Number = {Number}")]
+    public class Example1
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+    }
+
+    [DebuggerTypeProxy(typeof(<Example2>Proxy))]
+    public class Example2 : IEnumerable<int>
+    {
+        private sealed class <Example2>Proxy
+        {
+            private readonly Example2 original;
+
+            public <Example2>Proxy(Example2 original)
+            {
+                this.original = original;
+            }
+
+            public int[] Items
+            {
+                get { return new List<int>(original).ToArray(); }
+            }
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            return Enumerable.Range(0, 10).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+## Links
+
+[DebuggerDisplayAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggerdisplayattribute.aspx) on MSDN
+[DebuggerTypeProxyAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggertypeproxyattribute.aspx) on MSDN
+[Enhancing Debugging with the Debugger Display Attributes](http://msdn.microsoft.com/en-us/library/ms228992.aspx)
 
 ## Contributors
 
