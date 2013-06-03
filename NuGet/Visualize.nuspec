@@ -10,7 +10,7 @@
     <projectUrl>http://github.com/Fody/Visualize</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://raw.github.com/Fody/Visualize/master/Icons/package_icon.png</iconUrl>
-    <description>Helps you see your code.</description>
+    <description>Adds debugger attributes to help visualize objects.</description>
     <language>en-AU</language>
     <tags>Debugging, ILWeaving, Fody, Cecil</tags>
     <dependencies>
