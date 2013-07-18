@@ -23,7 +23,7 @@ public static class AssemblyWeaver
         File.Copy(BeforeAssemblyPathSymbols, AfterAssemblyPathSymbols, true);
 
         var assemblyResolver = new MockAssemblyResolver();
-        var moduleDefinition = ModuleDefinition.ReadModule(AfterAssemblyPath, new ReaderParameters() { ReadSymbols = true });
+        var moduleDefinition = ModuleDefinition.ReadModule(AfterAssemblyPath, new ReaderParameters { ReadSymbols = true });
 
         var weavingTask = new ModuleWeaver
         {
@@ -35,7 +35,7 @@ public static class AssemblyWeaver
         };
 
         weavingTask.Execute();
-        moduleDefinition.Write(AfterAssemblyPath, new WriterParameters() { WriteSymbols = true });
+        moduleDefinition.Write(AfterAssemblyPath, new WriterParameters { WriteSymbols = true });
 
         Assembly = Assembly.LoadFile(AfterAssemblyPath);
     }

@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.Linq;
 using Mono.Cecil;
@@ -12,27 +11,27 @@ public static class DebuggerTypeProxyInjector
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
             return;
 
-        var icollectiont = type.Interfaces.FirstOrDefault(i => i.Name == "ICollection`1");
-        if (icollectiont != null)
+        var collectionT = type.Interfaces.FirstOrDefault(i => i.Name == "ICollection`1");
+        if (collectionT != null)
         {
-            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)icollectiont);
+            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)collectionT);
             return;
         }
 
-        var ienumerablet = type.Interfaces.FirstOrDefault(i => i.Name == "IEnumerable`1");
-        if (ienumerablet != null)
+        var enumerableT = type.Interfaces.FirstOrDefault(i => i.Name == "IEnumerable`1");
+        if (enumerableT != null)
         {
-            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)ienumerablet);
+            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT);
             return;
         }
     }
 
-    private static void AddICollectionTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType icollectiont)
+    private static void AddICollectionTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType collectionT)
     {
         var proxyType = CreateProxy(moduleDefinition, type);
         var field = proxyType.Fields[0];
 
-        var itemType = icollectiont.GenericArguments[0];
+        var itemType = collectionT.GenericArguments[0];
         var itemArray = itemType.MakeArrayType();
 
         var countProperty = type.Properties.First(p => p.Name == "Count");
@@ -74,12 +73,12 @@ public static class DebuggerTypeProxyInjector
         AddDebuggerTypeProxyAttribute(type, proxyType);
     }
 
-    private static void AddIEnumerableTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType ienumerablet)
+    private static void AddIEnumerableTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType enumerableT)
     {
         var proxyType = CreateProxy(moduleDefinition, type);
         var field = proxyType.Fields[0];
 
-        var itemType = ienumerablet.GenericArguments[0];
+        var itemType = enumerableT.GenericArguments[0];
         var itemArray = itemType.MakeArrayType();
 
         var listCtor = ReferenceFinder.ListCtor.MakeHostInstanceGeneric(itemType);
