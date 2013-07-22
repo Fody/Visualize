@@ -19,7 +19,7 @@ public class ModuleWeaver
 
     public void Execute()
     {
-        ReferenceFinder.FindReferences(ModuleDefinition);
+        ReferenceFinder.FindReferences(AssemblyResolver, ModuleDefinition);
 
         foreach (var type in ModuleDefinition.Types)
             DebuggerDisplayInjector.AddDebuggerDisplayAttributes(ModuleDefinition, type);

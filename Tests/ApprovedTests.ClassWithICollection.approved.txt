@@ -1,13 +1,4 @@
-﻿
-//  Microsoft (R) .NET Framework IL Disassembler.
-//  Copyright (c) Microsoft Corporation.  All rights reserved.
-
-
-// warning : THIS IS A PARTIAL DISASSEMBLY, NOT SUITABLE FOR RE-ASSEMBLING
-
-
-
-.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithICollection
+﻿.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithICollection
        extends [mscorlib]System.Object
        implements class [mscorlib]System.Collections.Generic.ICollection`1<int32>,
                   class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>,
@@ -38,7 +29,6 @@
       IL_0008:  stfld      class AssemblyToProcess.ClassWithICollection AssemblyToProcess.ClassWithICollection/'<ClassWithICollection>Proxy'::original
       IL_000d:  ret
     } // end of method '<ClassWithICollection>Proxy'::.ctor
-
     .method public hidebysig specialname 
             instance int32[]  get_Items() cil managed
     {
@@ -61,14 +51,12 @@
       IL_0020:  ldloc.0
       IL_0021:  ret
     } // end of method '<ClassWithICollection>Proxy'::get_Items
-
     .property instance int32[] Items()
     {
       .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 03 00 00 00 00 00 ) 
       .get instance int32[] AssemblyToProcess.ClassWithICollection/'<ClassWithICollection>Proxy'::get_Items()
     } // end of property '<ClassWithICollection>Proxy'::Items
   } // end of class '<ClassWithICollection>Proxy'
-
   .method public hidebysig newslot virtual final 
           instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> 
           GetEnumerator() cil managed
@@ -87,12 +75,10 @@
     IL_0009:  callvirt   instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>::GetEnumerator()
     IL_000e:  stloc.0
     IL_000f:  br.s       IL_0011
-
     .line 13,13 : 9,10 ''
     IL_0011:  ldloc.0
     IL_0012:  ret
   } // end of method ClassWithICollection::GetEnumerator
-
   .method private hidebysig newslot virtual final 
           instance class [mscorlib]System.Collections.IEnumerator 
           System.Collections.IEnumerable.GetEnumerator() cil managed
@@ -108,12 +94,10 @@
     IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithICollection::GetEnumerator()
     IL_0007:  stloc.0
     IL_0008:  br.s       IL_000a
-
     .line 18,18 : 9,10 ''
     IL_000a:  ldloc.0
     IL_000b:  ret
   } // end of method ClassWithICollection::System.Collections.IEnumerable.GetEnumerator
-
   .method public hidebysig newslot virtual final 
           instance void  Add(int32 item) cil managed
   {
@@ -125,7 +109,6 @@
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Add
-
   .method public hidebysig newslot virtual final 
           instance void  Clear() cil managed
   {
@@ -137,7 +120,6 @@
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Clear
-
   .method public hidebysig newslot virtual final 
           instance bool  Contains(int32 item) cil managed
   {
@@ -149,7 +131,6 @@
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Contains
-
   .method public hidebysig newslot virtual final 
           instance void  CopyTo(int32[] 'array',
                                 int32 arrayIndex) cil managed
@@ -162,7 +143,6 @@
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::CopyTo
-
   .method public hidebysig newslot specialname virtual final 
           instance int32  get_Count() cil managed
   {
@@ -175,12 +155,10 @@
     IL_0001:  ldc.i4.s   10
     IL_0003:  stloc.0
     IL_0004:  br.s       IL_0006
-
     .line 42,42 : 30,31 ''
     IL_0006:  ldloc.0
     IL_0007:  ret
   } // end of method ClassWithICollection::get_Count
-
   .method public hidebysig newslot specialname virtual final 
           instance bool  get_IsReadOnly() cil managed
   {
@@ -193,12 +171,10 @@
     IL_0001:  ldc.i4.1
     IL_0002:  stloc.0
     IL_0003:  br.s       IL_0005
-
     .line 47,47 : 32,33 ''
     IL_0005:  ldloc.0
     IL_0006:  ret
   } // end of method ClassWithICollection::get_IsReadOnly
-
   .method public hidebysig newslot virtual final 
           instance bool  Remove(int32 item) cil managed
   {
@@ -210,7 +186,6 @@
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Remove
-
   .method public hidebysig specialname rtspecialname 
           instance void  .ctor() cil managed
   {
@@ -220,7 +195,6 @@
     IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
     IL_0006:  ret
   } // end of method ClassWithICollection::.ctor
-
   .property instance int32 Count()
   {
     .get instance int32 AssemblyToProcess.ClassWithICollection::get_Count()
@@ -230,5 +204,3 @@
     .get instance bool AssemblyToProcess.ClassWithICollection::get_IsReadOnly()
   } // end of property ClassWithICollection::IsReadOnly
 } // end of class AssemblyToProcess.ClassWithICollection
-
-// *********** DISASSEMBLY COMPLETE ***********************
