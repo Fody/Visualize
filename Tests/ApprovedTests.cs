@@ -1,13 +1,9 @@
 ﻿#if(DEBUG)
 
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using ApprovalTests;
 using ApprovalTests.Reporters;
-using Microsoft.Build.Utilities;
 using NUnit.Framework;
 
 [TestFixture]
@@ -30,6 +26,12 @@ public class ApprovedTests
     public void ClassWithICollection()
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithICollection"));
+    }
+
+    [Test]
+    public void ClassWithExistingAttributes()
+    {
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithExistingAttributes"));
     }
 
     //[Test]
