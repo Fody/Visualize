@@ -10,7 +10,7 @@ public static class DebuggerDisplayInjector
             return;
 
         var fields = type.Fields.Where(f => f.IsPublic && CanPrint(f.FieldType)).Cast<MemberReference>();
-        var props = type.Properties.Where(p => p.GetMethod.IsPublic && CanPrint(p.PropertyType)).Cast<MemberReference>();
+        var props = type.Properties.Where(p => p.GetMethod != null && p.GetMethod.IsPublic && CanPrint(p.PropertyType)).Cast<MemberReference>();
 
         var displayBits = fields.Concat(props)
             .OrderBy(m => m.Name)
@@ -24,7 +24,7 @@ public static class DebuggerDisplayInjector
         }
     }
 
-    private readonly static List<string> basicNames = new List<string>
+    private readonly static HashSet<string> basicNames = new HashSet<string>
     {
         typeof (short).Name,
         typeof (ushort).Name,
@@ -53,6 +53,12 @@ public static class DebuggerDisplayInjector
 
         if (typeDefinition.IsEnum)
             return true;
+
+        if (typeReference.IsGenericInstance && typeReference.Name == "Nullable`1")
+        {
+            var genericType = (GenericInstanceType)typeReference;
+            return basicNames.Contains(genericType.GenericArguments[0].Name);
+        }
 
         return false;
     }
