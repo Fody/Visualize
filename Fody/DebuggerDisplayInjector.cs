@@ -49,10 +49,10 @@ public static class DebuggerDisplayInjector
         if (typeReference.IsArray)
             return false;
 
-        var typeDefinition = typeReference.Resolve();
+        //var typeDefinition = typeReference.Resolve();
 
-        if (typeDefinition.IsEnum)
-            return true;
+        //if (typeDefinition.IsEnum)
+        //    return true;
 
         if (typeReference.IsGenericInstance && typeReference.Name == "Nullable`1")
         {

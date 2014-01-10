@@ -34,6 +34,18 @@ public class ApprovedTests
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithExistingAttributes"));
     }
 
+    [Test]
+    public void GenericClassWithIEnumerable()
+    {
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable"));
+    }
+
+    [Test]
+    public void GenericClassWithICollection()
+    {
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithICollection"));
+    }
+
     //[Test]
     //public void Sample()
     //{
