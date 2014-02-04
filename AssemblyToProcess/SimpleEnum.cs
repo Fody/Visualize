@@ -7,7 +7,7 @@ namespace AssemblyToProcess
 {
     public enum SimpleEnum
     {
-        None = 1,
+        None = 0,
         Value1
     }
 }
