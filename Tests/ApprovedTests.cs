@@ -37,13 +37,13 @@ public class ApprovedTests
     [Test]
     public void GenericClassWithIEnumerable()
     {
-        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable"));
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
     }
 
     [Test]
     public void GenericClassWithICollection()
     {
-        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithICollection"));
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
     }
 
     //[Test]

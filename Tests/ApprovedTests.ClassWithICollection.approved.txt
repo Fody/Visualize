@@ -4,14 +4,14 @@
                   class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>,
                   [mscorlib]System.Collections.IEnumerable
 {
-  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 2B 43 6F 75 6E 74 20 3D 20 7B 43 6F 75 6E   // ..+Count = {Coun
-                                                                                                 74 7D 20 7C 20 49 73 52 65 61 64 4F 6E 6C 79 20   // t} | IsReadOnly 
-                                                                                                 3D 20 7B 49 73 52 65 61 64 4F 6E 6C 79 7D 00 00 ) // = {IsReadOnly}..
   .custom instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 42 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..BAssemblyToPro
                                                                                                                         63 65 73 73 2E 43 6C 61 73 73 57 69 74 68 49 43   // cess.ClassWithIC
                                                                                                                         6F 6C 6C 65 63 74 69 6F 6E 2B 3C 43 6C 61 73 73   // ollection+<Class
                                                                                                                         57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E   // WithICollection>
                                                                                                                         50 72 6F 78 79 00 00 )                            // Proxy..
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 2B 43 6F 75 6E 74 20 3D 20 7B 43 6F 75 6E   // ..+Count = {Coun
+                                                                                                 74 7D 20 7C 20 49 73 52 65 61 64 4F 6E 6C 79 20   // t} | IsReadOnly 
+                                                                                                 3D 20 7B 49 73 52 65 61 64 4F 6E 6C 79 7D 00 00 ) // = {IsReadOnly}..
   .class auto ansi sealed nested private beforefieldinit '<ClassWithICollection>Proxy'
          extends [mscorlib]System.Object
   {
