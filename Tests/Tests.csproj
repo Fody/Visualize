@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovedTests.cs" />
+    <Compile Include="DebuggerDisplayInjectorTests.cs" />
     <Compile Include="Helpers\AssemblyWeaver.cs" />
     <Compile Include="Helpers\Decompiler.cs" />
     <Compile Include="Helpers\MockAssemblyResolver.cs" />
