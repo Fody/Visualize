@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace AssemblyToProcess
 {
+    [Visualize.DebuggerEnumerableType]
     public class ClassWithICollection : ICollection<int>
     {
         public IEnumerator<int> GetEnumerator()

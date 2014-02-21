@@ -11,6 +11,9 @@ public static class DebuggerTypeProxyInjector
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
             return;
 
+        if (!type.CustomAttributes.Any(c => c.AttributeType.Name == "DebuggerEnumerableTypeAttribute"))
+            return;
+
         var collectionT = type.Interfaces.FirstOrDefault(i => i.Name == "ICollection`1");
         if (collectionT != null)
         {

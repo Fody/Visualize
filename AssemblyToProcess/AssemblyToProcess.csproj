@@ -41,6 +41,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassWithIEnumerableNotAttributed.cs" />
     <Compile Include="SimpleEnum.cs" />
     <Compile Include="GenericClassWithIEnumerable.cs" />
     <Compile Include="GenericClassWithICollection.cs" />

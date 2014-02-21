@@ -26,25 +26,28 @@ public class ModuleWeaver
         foreach (var type in ModuleDefinition.Types.ToList())
             DebuggerTypeProxyInjector.AddDebuggerTypeProxyAttributes(ModuleDefinition, type);
 
-        //RemoveAttributes();
-        //RemoveReference();
+        RemoveAttributes();
+        RemoveReference();
     }
 
-    //private void RemoveAttributes()
-    //{
-    //    ModuleDefinition.Assembly.RemoveFodyAttributes();
-    //}
+    private void RemoveAttributes()
+    {
+        ModuleDefinition.Assembly.RemoveFodyAttributes();
 
-    //private void RemoveReference()
-    //{
-    //    var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "Visualize");
-    //    if (referenceToRemove == null)
-    //    {
-    //        LogInfo("\tNo reference to 'Visualize.dll' found. References not modified.");
-    //        return;
-    //    }
+        foreach (var type in ModuleDefinition.Types)
+            type.RemoveFodyAttributes();
+    }
 
-    //    ModuleDefinition.AssemblyReferences.Remove(referenceToRemove);
-    //    LogInfo("\tRemoving reference to 'Visualize.dll'.");
-    //}
+    private void RemoveReference()
+    {
+        var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "Visualize");
+        if (referenceToRemove == null)
+        {
+            LogInfo("\tNo reference to 'Visualize.dll' found. References not modified.");
+            return;
+        }
+
+        ModuleDefinition.AssemblyReferences.Remove(referenceToRemove);
+        LogInfo("\tRemoving reference to 'Visualize.dll'.");
+    }
 }

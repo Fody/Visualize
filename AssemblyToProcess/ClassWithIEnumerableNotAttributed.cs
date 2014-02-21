@@ -1,11 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AssemblyToProcess
 {
-    [Visualize.DebuggerEnumerableType]
-    public class ClassWithIEnumerable : IEnumerable<int>
+    public class ClassWithIEnumerableNotAttributed : IEnumerable<int>
     {
         public IEnumerator<int> GetEnumerator()
         {

@@ -46,6 +46,12 @@ public class ApprovedTests
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
     }
 
+    [Test]
+    public void ClassWithIEnumerableNotAttributed()
+    {
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
+    }
+
     //[Test]
     //public void Sample()
     //{
