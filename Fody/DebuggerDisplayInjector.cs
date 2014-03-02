@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
+using Mono.Cecil.Cil;
+using Mono.Cecil.Rocks;
 
 public static class DebuggerDisplayInjector
 {
@@ -32,14 +35,66 @@ public static class DebuggerDisplayInjector
 
         var displayBits = fields.Concat(props)
             .OrderBy(m => m, new DisplayAttributeOrderComparer())
-            .Select(m => string.Format("{0} = {{{1}}}", DisplayName(m), m.Name));
+            .ToList();
 
-        if (displayBits.Any())
+        if (!displayBits.Any())
+            return;
+
+        AddSimpleDebuggerDisplayAttribute(moduleDefinition, type);
+
+        if (type.Methods.Any(m => m.Name == "DebuggerDisplay" && m.Parameters.Count == 0))
+            return;
+
+        var debuggerDisplayMethod = new MethodDefinition("DebuggerDisplay", MethodAttributes.Private | MethodAttributes.HideBySig | MethodAttributes.SpecialName, moduleDefinition.TypeSystem.String);
+        var body = debuggerDisplayMethod.Body;
+
+        var arrayVar = new VariableDefinition(moduleDefinition.TypeSystem.Object.MakeArrayType());
+        body.Variables.Add(arrayVar);
+
+        body.SimplifyMacros();
+        body.Instructions.Add(Instruction.Create(OpCodes.Ldstr, String.Join(" | ", displayBits.Select((m, i) => string.Format("{0} = \"{{{1}}}\"", DisplayName(m), i)))));
+        body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, displayBits.Count));
+        body.Instructions.Add(Instruction.Create(OpCodes.Newarr, moduleDefinition.TypeSystem.Object));
+        body.Instructions.Add(Instruction.Create(OpCodes.Stloc, arrayVar));
+
+        for (int i = 0; i < displayBits.Count; i++)
         {
-            var debuggerDisplay = new CustomAttribute(ReferenceFinder.DebuggerDisplayAttributeCtor);
-            debuggerDisplay.ConstructorArguments.Add(new CustomAttributeArgument(moduleDefinition.TypeSystem.String, string.Join(" | ", displayBits)));
-            type.CustomAttributes.Add(debuggerDisplay);
+            body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
+            body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, i));
+            body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
+
+            var field = displayBits[i] as FieldDefinition;
+            if (field != null)
+            {
+                body.Instructions.Add(Instruction.Create(OpCodes.Ldfld, field));
+                if (!field.FieldType.IsRefType())
+                    body.Instructions.Add(Instruction.Create(OpCodes.Box, field.FieldType));
+            }
+            var property = displayBits[i] as PropertyDefinition;
+            if (property != null)
+            {
+                body.Instructions.Add(Instruction.Create(OpCodes.Call, property.GetMethod));
+                if (!property.PropertyType.IsRefType())
+                    body.Instructions.Add(Instruction.Create(OpCodes.Box, property.PropertyType));
+            }
+
+            body.Instructions.Add(Instruction.Create(OpCodes.Stelem_Ref));
         }
+
+        body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
+        body.Instructions.Add(Instruction.Create(OpCodes.Call, ReferenceFinder.StringFormat));
+        body.Instructions.Add(Instruction.Create(OpCodes.Ret));
+        body.InitLocals = true;
+        body.OptimizeMacros();
+
+        type.Methods.Add(debuggerDisplayMethod);
+    }
+
+    private static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type)
+    {
+        var debuggerDisplay = new CustomAttribute(ReferenceFinder.DebuggerDisplayAttributeCtor);
+        debuggerDisplay.ConstructorArguments.Add(new CustomAttributeArgument(moduleDefinition.TypeSystem.String, "{DebuggerDisplay(),nq}"));
+        type.CustomAttributes.Add(debuggerDisplay);
     }
 
     private static string DisplayName(MemberReference member)
@@ -62,16 +117,16 @@ public static class DebuggerDisplayInjector
     {
         var customAttributeProvider = member as ICustomAttributeProvider;
         if (customAttributeProvider == null)
-            return int.MaxValue;
+            return 0;
 
         var display = customAttributeProvider.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
         if (display == null)
-            return int.MaxValue;
+            return 0;
 
         if (display.Properties.Any(p => p.Name == "Order"))
             return (int)display.Properties.First(p => p.Name == "Order").Argument.Value;
 
-        return int.MaxValue;
+        return 0;
     }
 
     private readonly static HashSet<string> basicNames = new HashSet<string>

@@ -11,6 +11,7 @@ public static class ReferenceFinder
     public static MethodReference DebuggerDisplayAttributeCtor;
     public static MethodReference DebuggerTypeProxyAttributeCtor;
     public static MethodReference CompilerGeneratedAttributeCtor;
+    public static MethodReference StringFormat;
 
     public static void FindReferences(IAssemblyResolver assemblyResolver, ModuleDefinition moduleDefinition)
     {
@@ -49,5 +50,8 @@ public static class ReferenceFinder
 
         var compilerGeneratedAttribute = baseLibTypes.First(t => t.Name == "CompilerGeneratedAttribute");
         CompilerGeneratedAttributeCtor = moduleDefinition.Import(compilerGeneratedAttribute.Methods.First(x => x.IsConstructor));
+
+        StringFormat = moduleDefinition.Import(moduleDefinition.TypeSystem.String.Resolve().Methods
+            .First(m => m.Name == "Format" && m.Parameters.Count == 2 && m.Parameters[0].ParameterType.FullName == "System.String" && m.Parameters[1].ParameterType.FullName == "System.Object[]"));
     }
 }

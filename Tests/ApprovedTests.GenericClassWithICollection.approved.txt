@@ -10,9 +10,8 @@
                                                                                                                         60 31 2B 3C 47 65 6E 65 72 69 63 43 6C 61 73 73   // `1+<GenericClass
                                                                                                                         57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E   // WithICollection>
                                                                                                                         50 72 6F 78 79 00 00 )                            // Proxy..
-  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 2B 43 6F 75 6E 74 20 3D 20 7B 43 6F 75 6E   // ..+Count = {Coun
-                                                                                                 74 7D 20 7C 20 49 73 52 65 61 64 4F 6E 6C 79 20   // t} | IsReadOnly 
-                                                                                                 3D 20 7B 49 73 52 65 61 64 4F 6E 6C 79 7D 00 00 ) // = {IsReadOnly}..
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
+                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .class auto ansi sealed nested private beforefieldinit '<GetEnumerator>d__0'<T>
          extends [mscorlib]System.Object
          implements class [mscorlib]System.Collections.Generic.IEnumerator`1<!T>,
@@ -310,6 +309,33 @@
     IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
     IL_0006:  ret
   } // end of method GenericClassWithICollection`1::.ctor
+  .method private hidebysig specialname instance string 
+          DebuggerDisplay() cil managed
+  {
+    // Code size       47 (0x2f)
+    .maxstack  4
+    .locals init (object[] V_0)
+    IL_0000:  ldstr      "Count = \"{0}\" | IsReadOnly = \"{1}\""
+    IL_0005:  ldc.i4.2
+    IL_0006:  newarr     [mscorlib]System.Object
+    IL_000b:  stloc.0
+    IL_000c:  ldloc.0
+    IL_000d:  ldc.i4.0
+    IL_000e:  ldarg.0
+    IL_000f:  call       instance int32 AssemblyToProcess.GenericClassWithICollection`1::get_Count()
+    IL_0014:  box        [mscorlib]System.Int32
+    IL_0019:  stelem.ref
+    IL_001a:  ldloc.0
+    IL_001b:  ldc.i4.1
+    IL_001c:  ldarg.0
+    IL_001d:  call       instance bool AssemblyToProcess.GenericClassWithICollection`1::get_IsReadOnly()
+    IL_0022:  box        [mscorlib]System.Boolean
+    IL_0027:  stelem.ref
+    IL_0028:  ldloc.0
+    IL_0029:  call       string [mscorlib]System.String::Format(string,
+                                                                object[])
+    IL_002e:  ret
+  } // end of method GenericClassWithICollection`1::DebuggerDisplay
   .property instance int32 Count()
   {
     .get instance int32 AssemblyToProcess.GenericClassWithICollection`1::get_Count()
