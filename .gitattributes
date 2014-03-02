@@ -4,6 +4,7 @@
 # Don't check these into the repo as LF to work around TeamCity bug
 *.xml          -text 
 *.targets      -text
+*.ps1      -text
 *.approved.txt -text
 
 # Custom for Visual Studio
