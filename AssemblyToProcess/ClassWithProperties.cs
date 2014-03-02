@@ -15,5 +15,7 @@ namespace AssemblyToProcess
         {
             set { setterOnly = value; }
         }
+
+        public SimpleEnum SimpleEnum { get; set; }
     }
 }

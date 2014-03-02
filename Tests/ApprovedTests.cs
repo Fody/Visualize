@@ -11,12 +11,6 @@ using NUnit.Framework;
 public class ApprovedTests
 {
     [Test]
-    public void ClassWithProperties()
-    {
-        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithProperties"));
-    }
-
-    [Test]
     public void ClassWithIEnumerable()
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
@@ -26,12 +20,6 @@ public class ApprovedTests
     public void ClassWithICollection()
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithICollection"));
-    }
-
-    [Test]
-    public void ClassWithExistingAttributes()
-    {
-        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithExistingAttributes"));
     }
 
     [Test]

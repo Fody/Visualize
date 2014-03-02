@@ -72,6 +72,7 @@
     <Compile Include="ApprovedTests.cs" />
     <Compile Include="DebuggerDisplayInjectorTests.cs" />
     <Compile Include="Helpers\AssemblyWeaver.cs" />
+    <Compile Include="Helpers\AssertEx.cs" />
     <Compile Include="Helpers\Decompiler.cs" />
     <Compile Include="Helpers\MockAssemblyResolver.cs" />
     <Compile Include="VerifyTest.cs" />
