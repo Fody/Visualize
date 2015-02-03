@@ -4,12 +4,10 @@
 
 Adds debugger attributes to help visualize objects.
 
-## Nuget 
+## The nuget package  [![NuGet Status](http://img.shields.io/nuget/v/Visualize.Fody.svg?style=flat)](https://www.nuget.org/packages/Visualize.Fody/)
 
-Nuget package http://nuget.org/packages/Visualize.Fody 
+https://nuget.org/packages/Visualize.Fody/
 
-To Install from the Nuget Package Manager Console 
-    
     PM> Install-Package Visualize.Fody
 
 ### Your Code
