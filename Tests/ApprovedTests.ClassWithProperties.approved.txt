@@ -247,8 +247,8 @@
   } // end of property ClassWithProperties::String
   .property instance bool Boolean()
   {
-    .get instance bool AssemblyToProcess.ClassWithProperties::get_Boolean()
     .set instance void AssemblyToProcess.ClassWithProperties::set_Boolean(bool)
+    .get instance bool AssemblyToProcess.ClassWithProperties::get_Boolean()
   } // end of property ClassWithProperties::Boolean
   .property instance valuetype [mscorlib]System.Nullable`1<int32>
           Nullable()

@@ -42,15 +42,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassWithDataAnnotations.cs" />
-    <Compile Include="ClassWithIEnumerableNotAttributed.cs" />
-    <Compile Include="SimpleEnum.cs" />
-    <Compile Include="GenericClassWithIEnumerable.cs" />
-    <Compile Include="GenericClassWithICollection.cs" />
-    <Compile Include="ClassWithExistingAttributes.cs" />
-    <Compile Include="ClassWithICollection.cs" />
-    <Compile Include="ClassWithIEnumerable.cs" />
-    <Compile Include="ClassWithProperties.cs" />
+    <Compile Include="ClassWithDataAnnotations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassWithExistingAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassWithICollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassWithIEnumerable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassWithIEnumerableNotAttributed.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassWithIndexor.cs" />
+    <Compile Include="ClassWithProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenericClassWithICollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenericClassWithIEnumerable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimpleEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

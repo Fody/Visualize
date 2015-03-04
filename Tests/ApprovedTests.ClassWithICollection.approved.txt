@@ -4,13 +4,13 @@
                   class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>,
                   [mscorlib]System.Collections.IEnumerable
 {
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
+                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .custom instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 42 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..BAssemblyToPro
                                                                                                                         63 65 73 73 2E 43 6C 61 73 73 57 69 74 68 49 43   // cess.ClassWithIC
                                                                                                                         6F 6C 6C 65 63 74 69 6F 6E 2B 3C 43 6C 61 73 73   // ollection+<Class
                                                                                                                         57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E   // WithICollection>
                                                                                                                         50 72 6F 78 79 00 00 )                            // Proxy..
-  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
-                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .class auto ansi sealed nested private beforefieldinit '<ClassWithICollection>Proxy'
          extends [mscorlib]System.Object
   {

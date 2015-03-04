@@ -29,8 +29,16 @@ public static class DebuggerDisplayInjector
         if (type.IsEnum || type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
             return;
 
-        var fields = type.Fields.Where(f => f.IsPublic && CanPrint(f.FieldType)).Cast<MemberReference>();
-        var props = type.Properties.Where(p => p.GetMethod != null && p.GetMethod.IsPublic && CanPrint(p.PropertyType)).Cast<MemberReference>();
+        var fields = type.Fields
+            .Where(f => f.IsPublic && CanPrint(f.FieldType))
+            .Cast<MemberReference>();
+        var props = type.Properties
+            .Where(p =>
+                p.GetMethod != null && 
+                p.GetMethod.IsPublic && 
+                !p.GetMethod.HasParameters && 
+                CanPrint(p.PropertyType))
+            .Cast<MemberReference>();
 
         var displayBits = fields.Concat(props)
             .OrderBy(m => m, new DisplayAttributeOrderComparer())
