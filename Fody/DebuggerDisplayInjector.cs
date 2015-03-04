@@ -18,10 +18,9 @@ public static class DebuggerDisplayInjector
 
             if (xorder < yorder)
                 return -1;
-            else if (xorder > yorder)
+            if (xorder > yorder)
                 return 1;
-            else
-                return stringComparer.Compare(x.Name, y.Name);
+            return stringComparer.Compare(x.Name, y.Name);
         }
     }
 
@@ -57,7 +56,7 @@ public static class DebuggerDisplayInjector
         body.Instructions.Add(Instruction.Create(OpCodes.Newarr, moduleDefinition.TypeSystem.Object));
         body.Instructions.Add(Instruction.Create(OpCodes.Stloc, arrayVar));
 
-        for (int i = 0; i < displayBits.Count; i++)
+        for (var i = 0; i < displayBits.Count; i++)
         {
             body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
             body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, i));

@@ -11,7 +11,7 @@ public static class DebuggerTypeProxyInjector
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
             return;
 
-        if (!type.CustomAttributes.Any(c => c.AttributeType.Name == "DebuggerEnumerableTypeAttribute"))
+        if (type.CustomAttributes.All(c => c.AttributeType.Name != "DebuggerEnumerableTypeAttribute"))
             return;
 
         var collectionT = type.Interfaces.FirstOrDefault(i => i.Name == "ICollection`1");
@@ -25,7 +25,6 @@ public static class DebuggerTypeProxyInjector
         if (enumerableT != null)
         {
             AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT);
-            return;
         }
     }
 
@@ -78,8 +77,10 @@ public static class DebuggerTypeProxyInjector
 
         proxyType.Methods.Add(getMethod);
 
-        var property = new PropertyDefinition("Items", PropertyAttributes.None, itemArray);
-        property.GetMethod = getMethod;
+        var property = new PropertyDefinition("Items", PropertyAttributes.None, itemArray)
+                       {
+                           GetMethod = getMethod
+                       };
         var debuggerBrowsableAttribute = new CustomAttribute(ReferenceFinder.DebuggerBrowsableAttributeCtor);
         debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);
@@ -112,8 +113,10 @@ public static class DebuggerTypeProxyInjector
         getMethod.Body.Instructions.Add(Instruction.Create(OpCodes.Ret));
         proxyType.Methods.Add(getMethod);
 
-        var property = new PropertyDefinition("Items", PropertyAttributes.None, itemArray);
-        property.GetMethod = getMethod;
+        var property = new PropertyDefinition("Items", PropertyAttributes.None, itemArray)
+                       {
+                           GetMethod = getMethod
+                       };
         var debuggerBrowsableAttribute = new CustomAttribute(ReferenceFinder.DebuggerBrowsableAttributeCtor);
         debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);

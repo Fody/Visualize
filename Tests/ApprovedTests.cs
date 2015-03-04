@@ -1,13 +1,9 @@
 ﻿#if(DEBUG)
 
-using System;
-using System.Linq;
 using ApprovalTests;
-using ApprovalTests.Reporters;
 using NUnit.Framework;
 
 [TestFixture]
-[UseReporter(typeof(DiffReporter))]
 public class ApprovedTests
 {
     [Test]

@@ -18,7 +18,7 @@ public static class ReferenceFinder
         var baseLib = assemblyResolver.Resolve("mscorlib");
         var baseLibTypes = baseLib.MainModule.Types;
 
-        var winrt = !baseLibTypes.Any(type => type.Name == "Object");
+        var winrt = baseLibTypes.All(type => type.Name != "Object");
         if (winrt)
         {
             baseLib = assemblyResolver.Resolve("System.Runtime");

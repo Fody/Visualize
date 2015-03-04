@@ -237,29 +237,29 @@
   } // end of method ClassWithProperties::DebuggerDisplay
   .property instance int32 Number()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_Number(int32)
     .get instance int32 AssemblyToProcess.ClassWithProperties::get_Number()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Number(int32)
   } // end of property ClassWithProperties::Number
   .property instance string String()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_String(string)
     .get instance string AssemblyToProcess.ClassWithProperties::get_String()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_String(string)
   } // end of property ClassWithProperties::String
   .property instance bool Boolean()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_Boolean(bool)
     .get instance bool AssemblyToProcess.ClassWithProperties::get_Boolean()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Boolean(bool)
   } // end of property ClassWithProperties::Boolean
   .property instance valuetype [mscorlib]System.Nullable`1<int32>
           Nullable()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_Nullable(valuetype [mscorlib]System.Nullable`1<int32>)
     .get instance valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::get_Nullable()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Nullable(valuetype [mscorlib]System.Nullable`1<int32>)
   } // end of property ClassWithProperties::Nullable
   .property instance string Internal()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_Internal(string)
     .get instance string AssemblyToProcess.ClassWithProperties::get_Internal()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Internal(string)
   } // end of property ClassWithProperties::Internal
   .property instance string SetterOnly()
   {
@@ -268,7 +268,7 @@
   .property instance valuetype AssemblyToProcess.SimpleEnum
           SimpleEnum()
   {
-    .set instance void AssemblyToProcess.ClassWithProperties::set_SimpleEnum(valuetype AssemblyToProcess.SimpleEnum)
     .get instance valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::get_SimpleEnum()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_SimpleEnum(valuetype AssemblyToProcess.SimpleEnum)
   } // end of property ClassWithProperties::SimpleEnum
 } // end of class AssemblyToProcess.ClassWithProperties

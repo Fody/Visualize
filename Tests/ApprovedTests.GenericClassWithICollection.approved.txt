@@ -4,14 +4,14 @@
                   class [mscorlib]System.Collections.Generic.IEnumerable`1<!T>,
                   [mscorlib]System.Collections.IEnumerable
 {
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
+                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .custom instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 52 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..RAssemblyToPro
                                                                                                                         63 65 73 73 2E 47 65 6E 65 72 69 63 43 6C 61 73   // cess.GenericClas
                                                                                                                         73 57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E   // sWithICollection
                                                                                                                         60 31 2B 3C 47 65 6E 65 72 69 63 43 6C 61 73 73   // `1+<GenericClass
                                                                                                                         57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E   // WithICollection>
                                                                                                                         50 72 6F 78 79 00 00 )                            // Proxy..
-  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
-                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .class auto ansi sealed nested private beforefieldinit '<GetEnumerator>d__0'<T>
          extends [mscorlib]System.Object
          implements class [mscorlib]System.Collections.Generic.IEnumerator`1<!T>,

@@ -96,15 +96,15 @@
     .custom instance void [System.ComponentModel.DataAnnotations]System.ComponentModel.DataAnnotations.DisplayAttribute::.ctor() = ( 01 00 02 00 54 0E 04 4E 61 6D 65 09 4C 61 73 74   // ....T..Name.Last
                                                                                                                                      20 4E 61 6D 65 54 08 05 4F 72 64 65 72 00 00 00   //  NameT..Order...
                                                                                                                                      00 ) 
-    .set instance void AssemblyToProcess.ClassWithDataAnnotations::set_LastName(string)
     .get instance string AssemblyToProcess.ClassWithDataAnnotations::get_LastName()
+    .set instance void AssemblyToProcess.ClassWithDataAnnotations::set_LastName(string)
   } // end of property ClassWithDataAnnotations::LastName
   .property instance string FirstName()
   {
     .custom instance void [System.ComponentModel.DataAnnotations]System.ComponentModel.DataAnnotations.DisplayAttribute::.ctor() = ( 01 00 02 00 54 0E 04 4E 61 6D 65 0A 46 69 72 73   // ....T..Name.Firs
                                                                                                                                      74 20 4E 61 6D 65 54 08 05 4F 72 64 65 72 01 00   // t NameT..Order..
                                                                                                                                      00 00 ) 
-    .set instance void AssemblyToProcess.ClassWithDataAnnotations::set_FirstName(string)
     .get instance string AssemblyToProcess.ClassWithDataAnnotations::get_FirstName()
+    .set instance void AssemblyToProcess.ClassWithDataAnnotations::set_FirstName(string)
   } // end of property ClassWithDataAnnotations::FirstName
 } // end of class AssemblyToProcess.ClassWithDataAnnotations
