@@ -11,9 +11,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <ConfigurationName>Release</ConfigurationName>
   </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <None Include="FodyWeavers.xml.install.xdt" />
-    <None Include="FodyWeavers.xml.uninstall.xdt" />
+    <None Include="dotnet.targets" />
+    <None Include="install.ps" />
+    <None Include="uninstall.ps" />
     <None Include="Visualize.nuspec">
       <SubType>Designer</SubType>
     </None>
@@ -30,12 +35,15 @@
   <Target Name="NuGetBuild" DependsOnTargets="Clean">
     <MakeDir Directories="$(SolutionDir)NuGetBuild" />
     <Copy SourceFiles="$(ProjectDir)Visualize.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
-    <Copy SourceFiles="$(ProjectDir)FodyWeavers.xml.install.xdt" DestinationFolder="$(SolutionDir)NuGetBuild\Content" />
-    <Copy SourceFiles="$(ProjectDir)FodyWeavers.xml.uninstall.xdt" DestinationFolder="$(SolutionDir)NuGetBuild\Content" />
+    <Copy SourceFiles="$(ProjectDir)install.ps" DestinationFiles="$(SolutionDir)NuGetBuild\Tools\install.ps1" />
+    <Copy SourceFiles="$(ProjectDir)uninstall.ps" DestinationFiles="$(SolutionDir)NuGetBuild\Tools\uninstall.ps1" />
     <Copy SourceFiles="$(SolutionDir)Fody\bin\$(ConfigurationName)\Visualize.Fody.dll" DestinationFolder="$(SolutionDir)NuGetBuild" />
     <Copy SourceFiles="$(SolutionDir)Fody\bin\$(ConfigurationName)\Visualize.Fody.pdb" DestinationFolder="$(SolutionDir)NuGetBuild" />
+    <Copy SourceFiles="$(ProjectDir)dotnet.targets" DestinationFiles="$(SolutionDir)NuGetBuild\build\dotnet\Visualize.Fody.targets" />
     <Copy SourceFiles="$(SolutionDir)ReferenceAssembly\bin\$(ConfigurationName)\Visualize.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40" />
     <Copy SourceFiles="$(SolutionDir)ReferenceAssembly\bin\$(ConfigurationName)\Visualize.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40" />
+    <Copy SourceFiles="$(SolutionDir)ReferenceAssembly\bin\$(ConfigurationName)\Visualize.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\dotnet" />
+    <Copy SourceFiles="$(SolutionDir)ReferenceAssembly\bin\$(ConfigurationName)\Visualize.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\dotnet" />
     <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(SolutionDir)Fody\bin\$(ConfigurationName)\Visualize.Fody.dll" />
   </Target>
   <ItemGroup>

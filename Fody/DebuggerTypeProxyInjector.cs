@@ -1,11 +1,28 @@
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
+using FieldAttributes = Mono.Cecil.FieldAttributes;
+using MethodAttributes = Mono.Cecil.MethodAttributes;
+using ParameterAttributes = Mono.Cecil.ParameterAttributes;
+using PropertyAttributes = Mono.Cecil.PropertyAttributes;
+using TypeAttributes = Mono.Cecil.TypeAttributes;
 
 public static class DebuggerTypeProxyInjector
 {
+    static ConstructorInfo genericParameterConstructor;
+
+    static DebuggerTypeProxyInjector()
+    {
+
+        var types = new[]
+        {
+            typeof(int), typeof(GenericParameterType ),typeof( ModuleDefinition )
+        };
+        genericParameterConstructor = typeof(GenericParameter).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
+    }
     public static void AddDebuggerTypeProxyAttributes(ModuleDefinition moduleDefinition, TypeDefinition type)
     {
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
@@ -36,7 +53,7 @@ public static class DebuggerTypeProxyInjector
         var proxyType = CreateProxy(moduleDefinition, type);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
-            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(gp => new GenericParameter(gp.Position, gp.Type, gp.Module)).ToArray());
+            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
 
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
@@ -47,8 +64,8 @@ public static class DebuggerTypeProxyInjector
 
         if (type.HasGenericParameters)
         {
-            countMethod = countMethod.MakeHostInstanceGeneric(type.GenericParameters.Select(gp => new GenericParameter(gp.Position, gp.Type, gp.Module)).ToArray());
-            copyToMethod = copyToMethod.MakeHostInstanceGeneric(type.GenericParameters.Select(gp => new GenericParameter(gp.Position, gp.Type, gp.Module)).ToArray());
+            countMethod = countMethod.MakeHostInstanceGeneric(type.GenericParameters.Select(CloneGenericParameter).ToArray());
+            copyToMethod = copyToMethod.MakeHostInstanceGeneric(type.GenericParameters.Select(CloneGenericParameter).ToArray());
         }
 
         var getMethod = new MethodDefinition("get_Items", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.SpecialName, itemArray);
@@ -97,7 +114,7 @@ public static class DebuggerTypeProxyInjector
         var proxyType = CreateProxy(moduleDefinition, type);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
-            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(gp => new GenericParameter(gp.Position, gp.Type, gp.Module)).ToArray());
+            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
 
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
@@ -125,6 +142,11 @@ public static class DebuggerTypeProxyInjector
         AddDebuggerTypeProxyAttribute(type, proxyType);
     }
 
+    static GenericParameter CloneGenericParameter(GenericParameter gp)
+    {
+        return (GenericParameter)genericParameterConstructor.Invoke(new object[] { gp.Position, gp.Type, gp.Module });
+    }
+
     private static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type)
     {
         var proxyType = new TypeDefinition(
@@ -145,10 +167,10 @@ public static class DebuggerTypeProxyInjector
                 proxyType.GenericParameters.Add(new GenericParameter(genericParameter.Name, proxyType));
             }
 
-            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(gp => new GenericParameter(gp.Position, gp.Type, gp.Module)).ToArray());
+            proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
         }
 
-        var originalType = moduleDefinition.Import(type);
+        var originalType = moduleDefinition.ImportReference(type);
         if (type.HasGenericParameters)
             originalType = originalType.MakeGenericInstanceType(proxyType.GenericParameters.ToArray());
 
@@ -162,7 +184,7 @@ public static class DebuggerTypeProxyInjector
             moduleDefinition.TypeSystem.Void);
         method.Parameters.Add(new ParameterDefinition("original", ParameterAttributes.None, originalType));
         method.Body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
-        method.Body.Instructions.Add(Instruction.Create(OpCodes.Call, moduleDefinition.Import(moduleDefinition.TypeSystem.Object.Resolve().Constructors().First())));
+        method.Body.Instructions.Add(Instruction.Create(OpCodes.Call, moduleDefinition.ImportReference(moduleDefinition.TypeSystem.Object.Resolve().Constructors().First())));
         method.Body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
         method.Body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_1));
         method.Body.Instructions.Add(Instruction.Create(OpCodes.Stfld, fieldRef));
