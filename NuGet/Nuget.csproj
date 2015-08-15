@@ -19,7 +19,7 @@
     <None Include="dotnet.targets" />
     <None Include="install.ps" />
     <None Include="uninstall.ps" />
-    <None Include="Visualize.nuspec">
+    <None Include="Visualize.Fody.nuspec">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -34,7 +34,7 @@
   <UsingTask TaskName="PepitaPackage.WeavingTask" AssemblyFile="$(SolutionDir)Tools\Pepita\PepitaPackage.dll" />
   <Target Name="NuGetBuild" DependsOnTargets="Clean">
     <MakeDir Directories="$(SolutionDir)NuGetBuild" />
-    <Copy SourceFiles="$(ProjectDir)Visualize.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
+    <Copy SourceFiles="$(ProjectDir)Visualize.Fody.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
     <Copy SourceFiles="$(ProjectDir)install.ps" DestinationFiles="$(SolutionDir)NuGetBuild\Tools\install.ps1" />
     <Copy SourceFiles="$(ProjectDir)uninstall.ps" DestinationFiles="$(SolutionDir)NuGetBuild\Tools\uninstall.ps1" />
     <Copy SourceFiles="$(SolutionDir)Fody\bin\$(ConfigurationName)\Visualize.Fody.dll" DestinationFolder="$(SolutionDir)NuGetBuild" />
