@@ -30,7 +30,7 @@ public static class DebuggerDisplayInjector
             return;
 
         var fields = type.Fields
-            .Where(f => f.IsPublic && CanPrint(f.FieldType))
+            .Where(f => f.IsPublic && !f.HasConstant && CanPrint(f.FieldType))
             .Cast<MemberReference>();
         var props = type.Properties
             .Where(p =>

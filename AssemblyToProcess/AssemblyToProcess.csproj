@@ -51,6 +51,7 @@
     <Compile Include="ClassWithICollection.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClassWithConst.cs" />
     <Compile Include="ClassWithIEnumerable.cs">
       <SubType>Code</SubType>
     </Compile>

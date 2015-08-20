@@ -12,6 +12,11 @@ public class ApprovedTests
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithProperties"));
     }
     [Test]
+    public void ClassWithConst()
+    {
+        Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithConst"));
+    }
+    [Test]
     public void ClassWithIndexor()
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
