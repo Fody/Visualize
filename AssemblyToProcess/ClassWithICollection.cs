@@ -38,15 +38,9 @@ namespace AssemblyToProcess
             throw new NotImplementedException();
         }
 
-        public int Count
-        {
-            get { return 10; }
-        }
+        public int Count => 10;
 
-        public bool IsReadOnly
-        {
-            get { return true; }
-        }
+        public bool IsReadOnly => true;
 
         public bool Remove(int item)
         {

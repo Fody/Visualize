@@ -151,7 +151,7 @@ public static class DebuggerTypeProxyInjector
     {
         var proxyType = new TypeDefinition(
             null,
-            string.Format("<{0}>Proxy", type.Name.Split('`')[0]),
+            $"<{type.Name.Split('`')[0]}>Proxy",
              TypeAttributes.NestedPrivate | TypeAttributes.Sealed | TypeAttributes.BeforeFieldInit,
              moduleDefinition.TypeSystem.Object);
         TypeReference proxyTypeRef = proxyType;

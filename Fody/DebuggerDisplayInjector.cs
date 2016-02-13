@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
@@ -59,7 +58,7 @@ public static class DebuggerDisplayInjector
         body.Variables.Add(arrayVar);
 
         body.SimplifyMacros();
-        body.Instructions.Add(Instruction.Create(OpCodes.Ldstr, String.Join(" | ", displayBits.Select((m, i) => string.Format("{0} = \"{{{1}}}\"", DisplayName(m), i)))));
+        body.Instructions.Add(Instruction.Create(OpCodes.Ldstr, string.Join(" | ", displayBits.Select((m, i) => $"{DisplayName(m)} = \"{{{i}}}\""))));
         body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, displayBits.Count));
         body.Instructions.Add(Instruction.Create(OpCodes.Newarr, moduleDefinition.TypeSystem.Object));
         body.Instructions.Add(Instruction.Create(OpCodes.Stloc, arrayVar));
@@ -123,10 +122,8 @@ public static class DebuggerDisplayInjector
     private static int DisplayOrder(MemberReference member)
     {
         var customAttributeProvider = member as ICustomAttributeProvider;
-        if (customAttributeProvider == null)
-            return 0;
 
-        var display = customAttributeProvider.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
+        var display = customAttributeProvider?.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
         if (display == null)
             return 0;
 
