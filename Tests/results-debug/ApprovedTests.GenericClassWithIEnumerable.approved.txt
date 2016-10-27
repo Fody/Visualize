@@ -1,0 +1,190 @@
+﻿.class public auto ansi beforefieldinit AssemblyToProcess.GenericClassWithIEnumerable`1<T>
+       extends [mscorlib]System.Object
+       implements class [mscorlib]System.Collections.Generic.IEnumerable`1<!T>,
+                  [mscorlib]System.Collections.IEnumerable
+{
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 52 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..RAssemblyToPro
+                                                                                                                        63 65 73 73 2E 47 65 6E 65 72 69 63 43 6C 61 73   // cess.GenericClas
+                                                                                                                        73 57 69 74 68 49 45 6E 75 6D 65 72 61 62 6C 65   // sWithIEnumerable
+                                                                                                                        60 31 2B 3C 47 65 6E 65 72 69 63 43 6C 61 73 73   // `1+<GenericClass
+                                                                                                                        57 69 74 68 49 45 6E 75 6D 65 72 61 62 6C 65 3E   // WithIEnumerable>
+                                                                                                                        50 72 6F 78 79 00 00 )                            // Proxy..
+  .class auto ansi sealed nested private beforefieldinit '<GetEnumerator>d__0'<T>
+         extends [mscorlib]System.Object
+         implements class [mscorlib]System.Collections.Generic.IEnumerator`1<!T>,
+                    [mscorlib]System.IDisposable,
+                    [mscorlib]System.Collections.IEnumerator
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    .field private int32 '<>1__state'
+    .field private !T '<>2__current'
+    .field public class AssemblyToProcess.GenericClassWithIEnumerable`1<!T> '<>4__this'
+    .method public hidebysig specialname rtspecialname 
+            instance void  .ctor(int32 '<>1__state') cil managed
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerHiddenAttribute::.ctor() = ( 01 00 00 00 ) 
+      // Code size       15 (0xf)
+      .maxstack  8
+      IL_0000:  ldarg.0
+      IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+      IL_0006:  nop
+      IL_0007:  ldarg.0
+      IL_0008:  ldarg.1
+      IL_0009:  stfld      int32 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>1__state'
+      IL_000e:  ret
+    } // end of method '<GetEnumerator>d__0'::.ctor
+    .method private hidebysig newslot virtual final 
+            instance void  System.IDisposable.Dispose() cil managed
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerHiddenAttribute::.ctor() = ( 01 00 00 00 ) 
+      .override [mscorlib]System.IDisposable::Dispose
+      // Code size       1 (0x1)
+      .maxstack  8
+      IL_0000:  ret
+    } // end of method '<GetEnumerator>d__0'::System.IDisposable.Dispose
+    .method private hidebysig newslot virtual final 
+            instance bool  MoveNext() cil managed
+    {
+      .override [mscorlib]System.Collections.IEnumerator::MoveNext
+      // Code size       26 (0x1a)
+      .maxstack  2
+      .locals init ([0] int32 )
+      .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+      .line 16707566,16707566 : 0,0 'AssemblyToProcess\\GenericClassWithIEnumerable.cs'
+      IL_0000:  ldarg.0
+      IL_0001:  ldfld      int32 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>1__state'
+      IL_0006:  stloc.0
+      IL_0007:  ldloc.0
+      IL_0008:  brfalse.s  IL_000c
+      IL_000a:  br.s       IL_000e
+      IL_000c:  br.s       IL_0010
+      IL_000e:  ldc.i4.0
+      IL_000f:  ret
+      IL_0010:  ldarg.0
+      IL_0011:  ldc.i4.m1
+      IL_0012:  stfld      int32 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>1__state'
+      .line 10,10 : 9,10 ''
+      IL_0017:  nop
+      .line 11,11 : 13,25 ''
+      IL_0018:  ldc.i4.0
+      IL_0019:  ret
+    } // end of method '<GetEnumerator>d__0'::MoveNext
+    .method private hidebysig newslot specialname virtual final 
+            instance !T  'System.Collections.Generic.IEnumerator<T>.get_Current'() cil managed
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerHiddenAttribute::.ctor() = ( 01 00 00 00 ) 
+      .override  method instance !0 class [mscorlib]System.Collections.Generic.IEnumerator`1<!T>::get_Current()
+      // Code size       7 (0x7)
+      .maxstack  8
+      IL_0000:  ldarg.0
+      IL_0001:  ldfld      !0 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>2__current'
+      IL_0006:  ret
+    } // end of method '<GetEnumerator>d__0'::'System.Collections.Generic.IEnumerator<T>.get_Current'
+    .method private hidebysig newslot virtual final 
+            instance void  System.Collections.IEnumerator.Reset() cil managed
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerHiddenAttribute::.ctor() = ( 01 00 00 00 ) 
+      .override [mscorlib]System.Collections.IEnumerator::Reset
+      // Code size       6 (0x6)
+      .maxstack  8
+      IL_0000:  newobj     instance void [mscorlib]System.NotSupportedException::.ctor()
+      IL_0005:  throw
+    } // end of method '<GetEnumerator>d__0'::System.Collections.IEnumerator.Reset
+    .method private hidebysig newslot specialname virtual final 
+            instance object  System.Collections.IEnumerator.get_Current() cil managed
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerHiddenAttribute::.ctor() = ( 01 00 00 00 ) 
+      .override [mscorlib]System.Collections.IEnumerator::get_Current
+      // Code size       12 (0xc)
+      .maxstack  8
+      IL_0000:  ldarg.0
+      IL_0001:  ldfld      !0 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>2__current'
+      IL_0006:  box        !T
+      IL_000b:  ret
+    } // end of method '<GetEnumerator>d__0'::System.Collections.IEnumerator.get_Current
+    .property instance !T 'System.Collections.Generic.IEnumerator<T>.Current'()
+    {
+      .get instance !T AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'::'System.Collections.Generic.IEnumerator<T>.get_Current'()
+    } // end of property '<GetEnumerator>d__0'::'System.Collections.Generic.IEnumerator<T>.Current'
+    .property instance object System.Collections.IEnumerator.Current()
+    {
+      .get instance object AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'::System.Collections.IEnumerator.get_Current()
+    } // end of property '<GetEnumerator>d__0'::System.Collections.IEnumerator.Current
+  } // end of class '<GetEnumerator>d__0'
+  .class auto ansi sealed nested private beforefieldinit '<GenericClassWithIEnumerable>Proxy'<T>
+         extends [mscorlib]System.Object
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    .field private initonly class AssemblyToProcess.GenericClassWithIEnumerable`1<!T> original
+    .method public hidebysig specialname rtspecialname 
+            instance void  .ctor(class AssemblyToProcess.GenericClassWithIEnumerable`1<!T> original) cil managed
+    {
+      // Code size       14 (0xe)
+      .maxstack  8
+      IL_0000:  ldarg.0
+      IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+      IL_0006:  ldarg.0
+      IL_0007:  ldarg.1
+      IL_0008:  stfld      class AssemblyToProcess.GenericClassWithIEnumerable`1<!0> class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GenericClassWithIEnumerable>Proxy'<!T>::original
+      IL_000d:  ret
+    } // end of method '<GenericClassWithIEnumerable>Proxy'::.ctor
+    .method public hidebysig specialname 
+            instance !T[]  get_Items() cil managed
+    {
+      // Code size       17 (0x11)
+      .maxstack  8
+      IL_0000:  ldarg.0
+      IL_0001:  ldfld      class AssemblyToProcess.GenericClassWithIEnumerable`1<!0> class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GenericClassWithIEnumerable>Proxy'<!T>::original
+      IL_0006:  newobj     instance void class [mscorlib]System.Collections.Generic.List`1<!T>::.ctor(class [mscorlib]System.Collections.Generic.IEnumerable`1<!0>)
+      IL_000b:  call       instance !0[] class [mscorlib]System.Collections.Generic.List`1<!T>::ToArray()
+      IL_0010:  ret
+    } // end of method '<GenericClassWithIEnumerable>Proxy'::get_Items
+    .property instance !T[] Items()
+    {
+      .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 03 00 00 00 00 00 ) 
+      .get instance !T[] AssemblyToProcess.GenericClassWithIEnumerable`1/'<GenericClassWithIEnumerable>Proxy'::get_Items()
+    } // end of property '<GenericClassWithIEnumerable>Proxy'::Items
+  } // end of class '<GenericClassWithIEnumerable>Proxy'
+  .method public hidebysig newslot virtual final 
+          instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!T> 
+          GetEnumerator() cil managed
+  {
+    // Code size       14 (0xe)
+    .maxstack  8
+    IL_0000:  ldc.i4.0
+    IL_0001:  newobj     instance void class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::.ctor(int32)
+    IL_0006:  dup
+    IL_0007:  ldarg.0
+    IL_0008:  stfld      class AssemblyToProcess.GenericClassWithIEnumerable`1<!0> class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>4__this'
+    IL_000d:  ret
+  } // end of method GenericClassWithIEnumerable`1::GetEnumerator
+  .method private hidebysig newslot virtual final 
+          instance class [mscorlib]System.Collections.IEnumerator 
+          System.Collections.IEnumerable.GetEnumerator() cil managed
+  {
+    .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
+    // Code size       12 (0xc)
+    .maxstack  1
+    .locals init ([0] class [mscorlib]System.Collections.IEnumerator )
+    .line 15,15 : 9,10 ''
+    IL_0000:  nop
+    .line 16,16 : 13,36 ''
+    IL_0001:  ldarg.0
+    IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class AssemblyToProcess.GenericClassWithIEnumerable`1<!T>::GetEnumerator()
+    IL_0007:  stloc.0
+    IL_0008:  br.s       IL_000a
+    .line 17,17 : 9,10 ''
+    IL_000a:  ldloc.0
+    IL_000b:  ret
+  } // end of method GenericClassWithIEnumerable`1::System.Collections.IEnumerable.GetEnumerator
+  .method public hidebysig specialname rtspecialname 
+          instance void  .ctor() cil managed
+  {
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+    IL_0006:  nop
+    IL_0007:  ret
+  } // end of method GenericClassWithIEnumerable`1::.ctor
+} // end of class AssemblyToProcess.GenericClassWithIEnumerable`1

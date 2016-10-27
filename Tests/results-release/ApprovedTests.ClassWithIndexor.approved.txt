@@ -1,0 +1,54 @@
+﻿.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithIndexor
+       extends [mscorlib]System.Object
+{
+  .custom instance void [mscorlib]System.Reflection.DefaultMemberAttribute::.ctor(string) = ( 01 00 04 49 74 65 6D 00 00 )                      // ...Item..
+  .field private string[] arr
+  .method public hidebysig specialname instance string 
+          get_Item(int32 i) cil managed
+  {
+    // Code size       9 (0x9)
+    .maxstack  8
+    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+    .line 12,12 : 17,31 'AssemblyToProcess\\ClassWithIndexor.cs'
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string[] AssemblyToProcess.ClassWithIndexor::arr
+    IL_0006:  ldarg.1
+    IL_0007:  ldelem.ref
+    IL_0008:  ret
+  } // end of method ClassWithIndexor::get_Item
+  .method public hidebysig specialname instance void 
+          set_Item(int32 i,
+                   string 'value') cil managed
+  {
+    // Code size       10 (0xa)
+    .maxstack  8
+    .line 16,16 : 17,32 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string[] AssemblyToProcess.ClassWithIndexor::arr
+    IL_0006:  ldarg.1
+    IL_0007:  ldarg.2
+    IL_0008:  stelem.ref
+    .line 17,17 : 13,14 ''
+    IL_0009:  ret
+  } // end of method ClassWithIndexor::set_Item
+  .method public hidebysig specialname rtspecialname 
+          instance void  .ctor() cil managed
+  {
+    // Code size       20 (0x14)
+    .maxstack  8
+    .line 5,5 : 9,48 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldc.i4.s   100
+    IL_0003:  newarr     [mscorlib]System.String
+    IL_0008:  stfld      string[] AssemblyToProcess.ClassWithIndexor::arr
+    IL_000d:  ldarg.0
+    IL_000e:  call       instance void [mscorlib]System.Object::.ctor()
+    IL_0013:  ret
+  } // end of method ClassWithIndexor::.ctor
+  .property instance string Item(int32)
+  {
+    .get instance string AssemblyToProcess.ClassWithIndexor::get_Item(int32)
+    .set instance void AssemblyToProcess.ClassWithIndexor::set_Item(int32,
+                                                                    string)
+  } // end of property ClassWithIndexor::Item
+} // end of class AssemblyToProcess.ClassWithIndexor

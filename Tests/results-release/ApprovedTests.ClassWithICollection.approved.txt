@@ -60,130 +60,92 @@
           instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> 
           GetEnumerator() cil managed
   {
-    // Code size       19 (0x13)
-    .maxstack  2
-    .locals init ([0] class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> CS$1$0000)
+    // Code size       14 (0xe)
+    .maxstack  8
     .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
-    .line 12,12 : 9,10 'AssemblyToProcess\\ClassWithICollection.cs'
-    IL_0000:  nop
-    .line 13,13 : 13,60 ''
-    IL_0001:  ldc.i4.0
-    IL_0002:  ldc.i4.s   10
-    IL_0004:  call       class [mscorlib]System.Collections.Generic.IEnumerable`1<int32> [System.Core]System.Linq.Enumerable::Range(int32,
+    .line 13,13 : 13,60 'AssemblyToProcess\\ClassWithICollection.cs'
+    IL_0000:  ldc.i4.0
+    IL_0001:  ldc.i4.s   10
+    IL_0003:  call       class [mscorlib]System.Collections.Generic.IEnumerable`1<int32> [System.Core]System.Linq.Enumerable::Range(int32,
                                                                                                                                     int32)
-    IL_0009:  callvirt   instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>::GetEnumerator()
-    IL_000e:  stloc.0
-    IL_000f:  br.s       IL_0011
-    .line 14,14 : 9,10 ''
-    IL_0011:  ldloc.0
-    IL_0012:  ret
+    IL_0008:  callvirt   instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>::GetEnumerator()
+    IL_000d:  ret
   } // end of method ClassWithICollection::GetEnumerator
   .method private hidebysig newslot virtual final 
           instance class [mscorlib]System.Collections.IEnumerator 
           System.Collections.IEnumerable.GetEnumerator() cil managed
   {
     .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
-    // Code size       12 (0xc)
-    .maxstack  1
-    .locals init ([0] class [mscorlib]System.Collections.IEnumerator CS$1$0000)
-    .line 17,17 : 9,10 ''
-    IL_0000:  nop
+    // Code size       7 (0x7)
+    .maxstack  8
     .line 18,18 : 13,36 ''
-    IL_0001:  ldarg.0
-    IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithICollection::GetEnumerator()
-    IL_0007:  stloc.0
-    IL_0008:  br.s       IL_000a
-    .line 19,19 : 9,10 ''
-    IL_000a:  ldloc.0
-    IL_000b:  ret
+    IL_0000:  ldarg.0
+    IL_0001:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithICollection::GetEnumerator()
+    IL_0006:  ret
   } // end of method ClassWithICollection::System.Collections.IEnumerable.GetEnumerator
   .method public hidebysig newslot virtual final 
           instance void  Add(int32 item) cil managed
   {
-    // Code size       7 (0x7)
+    // Code size       6 (0x6)
     .maxstack  8
-    .line 22,22 : 9,10 ''
-    IL_0000:  nop
     .line 23,23 : 13,49 ''
-    IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
-    IL_0006:  throw
+    IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
+    IL_0005:  throw
   } // end of method ClassWithICollection::Add
   .method public hidebysig newslot virtual final 
           instance void  Clear() cil managed
   {
-    // Code size       7 (0x7)
+    // Code size       6 (0x6)
     .maxstack  8
-    .line 27,27 : 9,10 ''
-    IL_0000:  nop
     .line 28,28 : 13,49 ''
-    IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
-    IL_0006:  throw
+    IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
+    IL_0005:  throw
   } // end of method ClassWithICollection::Clear
   .method public hidebysig newslot virtual final 
           instance bool  Contains(int32 item) cil managed
   {
-    // Code size       7 (0x7)
+    // Code size       6 (0x6)
     .maxstack  8
-    .line 32,32 : 9,10 ''
-    IL_0000:  nop
     .line 33,33 : 13,49 ''
-    IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
-    IL_0006:  throw
+    IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
+    IL_0005:  throw
   } // end of method ClassWithICollection::Contains
   .method public hidebysig newslot virtual final 
           instance void  CopyTo(int32[] 'array',
                                 int32 arrayIndex) cil managed
   {
-    // Code size       7 (0x7)
+    // Code size       6 (0x6)
     .maxstack  8
-    .line 37,37 : 9,10 ''
-    IL_0000:  nop
     .line 38,38 : 13,49 ''
-    IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
-    IL_0006:  throw
+    IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
+    IL_0005:  throw
   } // end of method ClassWithICollection::CopyTo
   .method public hidebysig newslot specialname virtual final 
           instance int32  get_Count() cil managed
   {
-    // Code size       8 (0x8)
-    .maxstack  1
-    .locals init ([0] int32 CS$1$0000)
-    .line 43,43 : 17,18 ''
-    IL_0000:  nop
-    .line 43,43 : 19,29 ''
-    IL_0001:  ldc.i4.s   10
-    IL_0003:  stloc.0
-    IL_0004:  br.s       IL_0006
-    .line 43,43 : 30,31 ''
-    IL_0006:  ldloc.0
-    IL_0007:  ret
+    // Code size       3 (0x3)
+    .maxstack  8
+    .line 41,41 : 29,31 ''
+    IL_0000:  ldc.i4.s   10
+    IL_0002:  ret
   } // end of method ClassWithICollection::get_Count
   .method public hidebysig newslot specialname virtual final 
           instance bool  get_IsReadOnly() cil managed
   {
-    // Code size       7 (0x7)
-    .maxstack  1
-    .locals init ([0] bool CS$1$0000)
-    .line 48,48 : 17,18 ''
-    IL_0000:  nop
-    .line 48,48 : 19,31 ''
-    IL_0001:  ldc.i4.1
-    IL_0002:  stloc.0
-    IL_0003:  br.s       IL_0005
-    .line 48,48 : 32,33 ''
-    IL_0005:  ldloc.0
-    IL_0006:  ret
+    // Code size       2 (0x2)
+    .maxstack  8
+    .line 43,43 : 35,39 ''
+    IL_0000:  ldc.i4.1
+    IL_0001:  ret
   } // end of method ClassWithICollection::get_IsReadOnly
   .method public hidebysig newslot virtual final 
           instance bool  Remove(int32 item) cil managed
   {
-    // Code size       7 (0x7)
+    // Code size       6 (0x6)
     .maxstack  8
-    .line 52,52 : 9,10 ''
-    IL_0000:  nop
-    .line 53,53 : 13,49 ''
-    IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
-    IL_0006:  throw
+    .line 47,47 : 13,49 ''
+    IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
+    IL_0005:  throw
   } // end of method ClassWithICollection::Remove
   .method public hidebysig specialname rtspecialname 
           instance void  .ctor() cil managed

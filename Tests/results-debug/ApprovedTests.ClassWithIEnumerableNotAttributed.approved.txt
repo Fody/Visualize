@@ -1,0 +1,57 @@
+﻿.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithIEnumerableNotAttributed
+       extends [mscorlib]System.Object
+       implements class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>,
+                  [mscorlib]System.Collections.IEnumerable
+{
+  .method public hidebysig newslot virtual final 
+          instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> 
+          GetEnumerator() cil managed
+  {
+    // Code size       19 (0x13)
+    .maxstack  2
+    .locals init ([0] class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> )
+    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+    .line 10,10 : 9,10 'AssemblyToProcess\\ClassWithIEnumerableNotAttributed.cs'
+    IL_0000:  nop
+    .line 11,11 : 13,60 ''
+    IL_0001:  ldc.i4.0
+    IL_0002:  ldc.i4.s   10
+    IL_0004:  call       class [mscorlib]System.Collections.Generic.IEnumerable`1<int32> [System.Core]System.Linq.Enumerable::Range(int32,
+                                                                                                                                    int32)
+    IL_0009:  callvirt   instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>::GetEnumerator()
+    IL_000e:  stloc.0
+    IL_000f:  br.s       IL_0011
+    .line 12,12 : 9,10 ''
+    IL_0011:  ldloc.0
+    IL_0012:  ret
+  } // end of method ClassWithIEnumerableNotAttributed::GetEnumerator
+  .method private hidebysig newslot virtual final 
+          instance class [mscorlib]System.Collections.IEnumerator 
+          System.Collections.IEnumerable.GetEnumerator() cil managed
+  {
+    .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
+    // Code size       12 (0xc)
+    .maxstack  1
+    .locals init ([0] class [mscorlib]System.Collections.IEnumerator )
+    .line 15,15 : 9,10 ''
+    IL_0000:  nop
+    .line 16,16 : 13,36 ''
+    IL_0001:  ldarg.0
+    IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithIEnumerableNotAttributed::GetEnumerator()
+    IL_0007:  stloc.0
+    IL_0008:  br.s       IL_000a
+    .line 17,17 : 9,10 ''
+    IL_000a:  ldloc.0
+    IL_000b:  ret
+  } // end of method ClassWithIEnumerableNotAttributed::System.Collections.IEnumerable.GetEnumerator
+  .method public hidebysig specialname rtspecialname 
+          instance void  .ctor() cil managed
+  {
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+    IL_0006:  nop
+    IL_0007:  ret
+  } // end of method ClassWithIEnumerableNotAttributed::.ctor
+} // end of class AssemblyToProcess.ClassWithIEnumerableNotAttributed

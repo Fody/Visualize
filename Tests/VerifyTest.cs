@@ -1,6 +1,4 @@
-﻿#if(DEBUG)
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 [TestFixture]
 public class VerifyTest
@@ -11,5 +9,3 @@ public class VerifyTest
         Verifier.Verify(AssemblyWeaver.BeforeAssemblyPath, AssemblyWeaver.AfterAssemblyPath);
     }
 }
-
-#endif

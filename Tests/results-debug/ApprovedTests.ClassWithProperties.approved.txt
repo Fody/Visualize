@@ -1,0 +1,269 @@
+﻿.class public auto ansi beforefieldinit AssemblyToProcess.ClassWithProperties
+       extends [mscorlib]System.Object
+{
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
+                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
+  .field private int32 '<Number>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .field private string '<String>k__BackingField'
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .field private bool '<Boolean>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .field private valuetype [mscorlib]System.Nullable`1<int32> '<Nullable>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .field private string '<Internal>k__BackingField'
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .field private string setterOnly
+  .field private valuetype AssemblyToProcess.SimpleEnum '<SimpleEnum>k__BackingField'
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+  .method public hidebysig specialname instance int32 
+          get_Number() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+    .line 5,5 : 29,33 'AssemblyToProcess\\ClassWithProperties.cs'
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_Number
+  .method public hidebysig specialname instance void 
+          set_Number(int32 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 5,5 : 34,38 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Number
+  .method public hidebysig specialname instance string 
+          get_String() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 6,6 : 32,36 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_String
+  .method public hidebysig specialname instance void 
+          set_String(string 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 6,6 : 37,41 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_String
+  .method public hidebysig specialname instance bool 
+          get_Boolean() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 7,7 : 31,35 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      bool AssemblyToProcess.ClassWithProperties::'<Boolean>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_Boolean
+  .method public hidebysig specialname instance void 
+          set_Boolean(bool 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 7,7 : 36,40 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      bool AssemblyToProcess.ClassWithProperties::'<Boolean>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Boolean
+  .method public hidebysig specialname instance valuetype [mscorlib]System.Nullable`1<int32> 
+          get_Nullable() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 9,9 : 32,36 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::'<Nullable>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_Nullable
+  .method public hidebysig specialname instance void 
+          set_Nullable(valuetype [mscorlib]System.Nullable`1<int32> 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 9,9 : 37,41 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::'<Nullable>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Nullable
+  .method assembly hidebysig specialname 
+          instance string  get_Internal() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 11,11 : 36,40 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_Internal
+  .method assembly hidebysig specialname 
+          instance void  set_Internal(string 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 11,11 : 41,45 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_Internal
+  .method public hidebysig specialname instance void 
+          set_SetterOnly(string 'value') cil managed
+  {
+    // Code size       9 (0x9)
+    .maxstack  8
+    .line 16,16 : 17,18 ''
+    IL_0000:  nop
+    .line 16,16 : 19,38 ''
+    IL_0001:  ldarg.0
+    IL_0002:  ldarg.1
+    IL_0003:  stfld      string AssemblyToProcess.ClassWithProperties::setterOnly
+    .line 16,16 : 39,40 ''
+    IL_0008:  ret
+  } // end of method ClassWithProperties::set_SetterOnly
+  .method public hidebysig specialname instance valuetype AssemblyToProcess.SimpleEnum 
+          get_SimpleEnum() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 19,19 : 40,44 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldfld      valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::'<SimpleEnum>k__BackingField'
+    IL_0006:  ret
+  } // end of method ClassWithProperties::get_SimpleEnum
+  .method public hidebysig specialname instance void 
+          set_SimpleEnum(valuetype AssemblyToProcess.SimpleEnum 'value') cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+    // Code size       8 (0x8)
+    .maxstack  8
+    .line 19,19 : 45,49 ''
+    IL_0000:  ldarg.0
+    IL_0001:  ldarg.1
+    IL_0002:  stfld      valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::'<SimpleEnum>k__BackingField'
+    IL_0007:  ret
+  } // end of method ClassWithProperties::set_SimpleEnum
+  .method public hidebysig specialname rtspecialname 
+          instance void  .ctor() cil managed
+  {
+    // Code size       8 (0x8)
+    .maxstack  8
+    IL_0000:  ldarg.0
+    IL_0001:  call       instance void [mscorlib]System.Object::.ctor()
+    IL_0006:  nop
+    IL_0007:  ret
+  } // end of method ClassWithProperties::.ctor
+  .method private hidebysig specialname instance string 
+          DebuggerDisplay() cil managed
+  {
+    // Code size       84 (0x54)
+    .maxstack  4
+    .locals init (object[] V_0)
+    IL_0000:  ldstr      "Boolean = \"{0}\" | Nullable = \"{1}\" | Number = \"{2}"
+    + "\" | SimpleEnum = \"{3}\" | String = \"{4}\""
+    IL_0005:  ldc.i4.5
+    IL_0006:  newarr     [mscorlib]System.Object
+    IL_000b:  stloc.0
+    IL_000c:  ldloc.0
+    IL_000d:  ldc.i4.0
+    IL_000e:  ldarg.0
+    IL_000f:  call       instance bool AssemblyToProcess.ClassWithProperties::get_Boolean()
+    IL_0014:  box        [mscorlib]System.Boolean
+    IL_0019:  stelem.ref
+    IL_001a:  ldloc.0
+    IL_001b:  ldc.i4.1
+    IL_001c:  ldarg.0
+    IL_001d:  call       instance valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::get_Nullable()
+    IL_0022:  box        valuetype [mscorlib]System.Nullable`1<int32>
+    IL_0027:  stelem.ref
+    IL_0028:  ldloc.0
+    IL_0029:  ldc.i4.2
+    IL_002a:  ldarg.0
+    IL_002b:  call       instance int32 AssemblyToProcess.ClassWithProperties::get_Number()
+    IL_0030:  box        [mscorlib]System.Int32
+    IL_0035:  stelem.ref
+    IL_0036:  ldloc.0
+    IL_0037:  ldc.i4.3
+    IL_0038:  ldarg.0
+    IL_0039:  call       instance valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::get_SimpleEnum()
+    IL_003e:  box        AssemblyToProcess.SimpleEnum
+    IL_0043:  stelem.ref
+    IL_0044:  ldloc.0
+    IL_0045:  ldc.i4.4
+    IL_0046:  ldarg.0
+    IL_0047:  call       instance string AssemblyToProcess.ClassWithProperties::get_String()
+    IL_004c:  stelem.ref
+    IL_004d:  ldloc.0
+    IL_004e:  call       string [mscorlib]System.String::Format(string,
+                                                                object[])
+    IL_0053:  ret
+  } // end of method ClassWithProperties::DebuggerDisplay
+  .property instance int32 Number()
+  {
+    .get instance int32 AssemblyToProcess.ClassWithProperties::get_Number()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Number(int32)
+  } // end of property ClassWithProperties::Number
+  .property instance string String()
+  {
+    .get instance string AssemblyToProcess.ClassWithProperties::get_String()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_String(string)
+  } // end of property ClassWithProperties::String
+  .property instance bool Boolean()
+  {
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Boolean(bool)
+    .get instance bool AssemblyToProcess.ClassWithProperties::get_Boolean()
+  } // end of property ClassWithProperties::Boolean
+  .property instance valuetype [mscorlib]System.Nullable`1<int32>
+          Nullable()
+  {
+    .get instance valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::get_Nullable()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Nullable(valuetype [mscorlib]System.Nullable`1<int32>)
+  } // end of property ClassWithProperties::Nullable
+  .property instance string Internal()
+  {
+    .get instance string AssemblyToProcess.ClassWithProperties::get_Internal()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_Internal(string)
+  } // end of property ClassWithProperties::Internal
+  .property instance string SetterOnly()
+  {
+    .set instance void AssemblyToProcess.ClassWithProperties::set_SetterOnly(string)
+  } // end of property ClassWithProperties::SetterOnly
+  .property instance valuetype AssemblyToProcess.SimpleEnum
+          SimpleEnum()
+  {
+    .get instance valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::get_SimpleEnum()
+    .set instance void AssemblyToProcess.ClassWithProperties::set_SimpleEnum(valuetype AssemblyToProcess.SimpleEnum)
+  } // end of property ClassWithProperties::SimpleEnum
+} // end of class AssemblyToProcess.ClassWithProperties

@@ -11,15 +11,13 @@
           get_LastName() cil managed
   {
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-    // Code size       11 (0xb)
-    .maxstack  1
-    .locals init (string V_0)
+    // Code size       7 (0x7)
+    .maxstack  8
+    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+    .line 8,8 : 34,38 'AssemblyToProcess\\ClassWithDataAnnotations.cs'
     IL_0000:  ldarg.0
     IL_0001:  ldfld      string AssemblyToProcess.ClassWithDataAnnotations::'<LastName>k__BackingField'
-    IL_0006:  stloc.0
-    IL_0007:  br.s       IL_0009
-    IL_0009:  ldloc.0
-    IL_000a:  ret
+    IL_0006:  ret
   } // end of method ClassWithDataAnnotations::get_LastName
   .method public hidebysig specialname instance void 
           set_LastName(string 'value') cil managed
@@ -27,6 +25,7 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
+    .line 8,8 : 39,43 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      string AssemblyToProcess.ClassWithDataAnnotations::'<LastName>k__BackingField'
@@ -36,15 +35,12 @@
           get_FirstName() cil managed
   {
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-    // Code size       11 (0xb)
-    .maxstack  1
-    .locals init (string V_0)
+    // Code size       7 (0x7)
+    .maxstack  8
+    .line 11,11 : 35,39 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      string AssemblyToProcess.ClassWithDataAnnotations::'<FirstName>k__BackingField'
-    IL_0006:  stloc.0
-    IL_0007:  br.s       IL_0009
-    IL_0009:  ldloc.0
-    IL_000a:  ret
+    IL_0006:  ret
   } // end of method ClassWithDataAnnotations::get_FirstName
   .method public hidebysig specialname instance void 
           set_FirstName(string 'value') cil managed
@@ -52,6 +48,7 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
+    .line 11,11 : 40,44 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      string AssemblyToProcess.ClassWithDataAnnotations::'<FirstName>k__BackingField'

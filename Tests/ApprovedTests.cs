@@ -1,8 +1,14 @@
-﻿#if(DEBUG)
-
-using ApprovalTests;
+﻿using ApprovalTests;
+using ApprovalTests.Namers;
+using ApprovalTests.Reporters;
 using NUnit.Framework;
 
+[UseReporter(typeof(DiffReporter))]
+#if(DEBUG)
+[UseApprovalSubdirectory("results-debug")]
+#else
+[UseApprovalSubdirectory("results-release")]
+#endif
 [TestFixture]
 public class ApprovedTests
 {
@@ -11,11 +17,13 @@ public class ApprovedTests
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithProperties"));
     }
+
     [Test]
     public void ClassWithConst()
     {
         Approvals.Verify(Decompiler.Decompile(AssemblyWeaver.AfterAssemblyPath, "AssemblyToProcess.ClassWithConst"));
     }
+
     [Test]
     public void ClassWithIndexor()
     {
@@ -65,5 +73,3 @@ public class ApprovedTests
     //    var sample = Activator.CreateInstance(sampleClassType);
     //}
 }
-
-#endif
