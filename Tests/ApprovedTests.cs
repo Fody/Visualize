@@ -1,9 +1,7 @@
 ﻿using ApprovalTests;
 using ApprovalTests.Namers;
-using ApprovalTests.Reporters;
 using NUnit.Framework;
 
-[UseReporter(typeof(DiffReporter))]
 #if(DEBUG)
 [UseApprovalSubdirectory("results-debug")]
 #else

@@ -15,20 +15,20 @@ public static class ReferenceFinder
 
     public static void FindReferences(IAssemblyResolver assemblyResolver, ModuleDefinition moduleDefinition)
     {
-        var baseLib = assemblyResolver.Resolve("mscorlib");
+        var baseLib = assemblyResolver.Resolve(new AssemblyNameReference("mscorlib", null));
         var baseLibTypes = baseLib.MainModule.Types;
 
         var winrt = baseLibTypes.All(type => type.Name != "Object");
         if (winrt)
         {
-            baseLib = assemblyResolver.Resolve("System.Runtime");
+            baseLib = assemblyResolver.Resolve(new AssemblyNameReference("System.Runtime", null));
             baseLibTypes = baseLib.MainModule.Types;
         }
 
-        var debugLib = !winrt ? baseLib : assemblyResolver.Resolve("System.Diagnostics.Debug");
+        var debugLib = !winrt ? baseLib : assemblyResolver.Resolve(new AssemblyNameReference("System.Diagnostics.Debug", null));
         var debugLibTypes = debugLib.MainModule.Types;
 
-        var collectionsLib = !winrt ? baseLib : assemblyResolver.Resolve("System.Collections");
+        var collectionsLib = !winrt ? baseLib : assemblyResolver.Resolve(new AssemblyNameReference("System.Collections", null));
         var collectionsLibTypes = collectionsLib.MainModule.Types;
 
         SystemType = moduleDefinition.ImportReference(baseLibTypes.First(t => t.Name == "Type"));

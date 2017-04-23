@@ -24,19 +24,20 @@ public static class AssemblyWeaver
         File.Copy(BeforeAssemblyPathSymbols, AfterAssemblyPathSymbols, true);
 
         var assemblyResolver = new MockAssemblyResolver();
-        var moduleDefinition = ModuleDefinition.ReadModule(AfterAssemblyPath, new ReaderParameters { ReadSymbols = true });
-
-        var weavingTask = new ModuleWeaver
+        using (var moduleDefinition = ModuleDefinition.ReadModule(BeforeAssemblyPath, new ReaderParameters {ReadSymbols = true}))
         {
-            ModuleDefinition = moduleDefinition,
-            AssemblyResolver = assemblyResolver,
-            LogError = LogError,
-            LogInfo = LogInfo,
-            DefineConstants = new[] { "DEBUG" }, // Always testing the debug weaver
-        };
+            var weavingTask = new ModuleWeaver
+            {
+                ModuleDefinition = moduleDefinition,
+                AssemblyResolver = new DefaultAssemblyResolver(),
+                LogError = LogError,
+                LogInfo = LogInfo,
+                DefineConstants = new[] { "DEBUG" }, // Always testing the debug weaver
+            };
 
-        weavingTask.Execute();
-        moduleDefinition.Write(AfterAssemblyPath, new WriterParameters { WriteSymbols = true });
+            weavingTask.Execute();
+            moduleDefinition.Write(AfterAssemblyPath, new WriterParameters { WriteSymbols = true });
+        }
 
         Assembly = Assembly.LoadFile(AfterAssemblyPath);
     }

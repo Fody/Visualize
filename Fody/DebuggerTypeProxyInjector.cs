@@ -31,17 +31,17 @@ public static class DebuggerTypeProxyInjector
         if (type.CustomAttributes.All(c => c.AttributeType.Name != "DebuggerEnumerableTypeAttribute"))
             return;
 
-        var collectionT = type.Interfaces.FirstOrDefault(i => i.Name == "ICollection`1");
+        var collectionT = type.Interfaces.FirstOrDefault(i => i.InterfaceType.Name == "ICollection`1");
         if (collectionT != null)
         {
-            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)collectionT);
+            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)collectionT.InterfaceType);
             return;
         }
 
-        var enumerableT = type.Interfaces.FirstOrDefault(i => i.Name == "IEnumerable`1");
+        var enumerableT = type.Interfaces.FirstOrDefault(i => i.InterfaceType.Name == "IEnumerable`1");
         if (enumerableT != null)
         {
-            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT);
+            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT.InterfaceType);
         }
     }
 
@@ -71,7 +71,7 @@ public static class DebuggerTypeProxyInjector
         var getMethod = new MethodDefinition("get_Items", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.SpecialName, itemArray);
         var getMethodBody = getMethod.Body;
 
-        var localItems = new VariableDefinition("items", itemArray);
+        var localItems = new VariableDefinition(itemArray);
         getMethodBody.Variables.Add(localItems);
 
         getMethodBody.SimplifyMacros();
