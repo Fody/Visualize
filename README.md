@@ -1,10 +1,15 @@
+[![Chat on Gitter Status](https://img.shields.io/gitter/room/fody/fody.svg?style=flat)](https://gitter.im/Fody/Fody)
+[![NuGet Status](http://img.shields.io/nuget/v/Visualize.Fody.svg?style=flat)](https://www.nuget.org/packages/Visualize.Fody/)
+
+
 ## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
 ![Visualize Icon - An eye](https://raw.github.com/Fody/Visualize/master/Icons/package_icon.png)
 
 Adds debugger attributes to help visualize objects.
 
-## The nuget package  [![NuGet Status](http://img.shields.io/nuget/v/Visualize.Fody.svg?style=flat)](https://www.nuget.org/packages/Visualize.Fody/)
+
+## The nuget package
 
 https://nuget.org/packages/Visualize.Fody/
 
@@ -69,15 +74,18 @@ https://nuget.org/packages/Visualize.Fody/
         }
     }
 
+
 ## Links
 
   * [DebuggerDisplayAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggerdisplayattribute.aspx) on MSDN
   * [DebuggerTypeProxyAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggertypeproxyattribute.aspx) on MSDN
   * [Enhancing Debugging with the Debugger Display Attributes](http://msdn.microsoft.com/en-us/library/ms228992.aspx)
 
+
 ## Contributors
 
   * [Cameron MacFarland](https://github.com/distantcam)
+
 
 ## Icon
 
