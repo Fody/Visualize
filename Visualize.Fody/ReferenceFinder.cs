@@ -1,19 +1,19 @@
 using System.Linq;
 using Mono.Cecil;
 
-public static class ReferenceFinder
+public class ReferenceFinder
 {
-    public static TypeReference SystemType;
-    public static TypeReference DebuggerBrowsableStateType;
-    public static MethodReference ListCtor;
-    public static MethodReference ListToArray;
-    public static MethodReference DebuggerBrowsableAttributeCtor;
-    public static MethodReference DebuggerDisplayAttributeCtor;
-    public static MethodReference DebuggerTypeProxyAttributeCtor;
-    public static MethodReference CompilerGeneratedAttributeCtor;
-    public static MethodReference StringFormat;
+    public TypeReference SystemType;
+    public TypeReference DebuggerBrowsableStateType;
+    public MethodReference ListCtor;
+    public MethodReference ListToArray;
+    public MethodReference DebuggerBrowsableAttributeCtor;
+    public MethodReference DebuggerDisplayAttributeCtor;
+    public MethodReference DebuggerTypeProxyAttributeCtor;
+    public MethodReference CompilerGeneratedAttributeCtor;
+    public MethodReference StringFormat;
 
-    public static void FindReferences(IAssemblyResolver assemblyResolver, ModuleDefinition moduleDefinition)
+    public void FindReferences(IAssemblyResolver assemblyResolver, ModuleDefinition moduleDefinition)
     {
         var baseLib = assemblyResolver.Resolve(new AssemblyNameReference("mscorlib", null));
         var baseLibTypes = baseLib.MainModule.Types;

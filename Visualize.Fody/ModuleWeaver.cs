@@ -19,26 +19,35 @@ public class ModuleWeaver
 
     public void Execute()
     {
+        ReferenceFinder = new ReferenceFinder();
         ReferenceFinder.FindReferences(AssemblyResolver, ModuleDefinition);
 
         foreach (var type in ModuleDefinition.Types)
-            DebuggerDisplayInjector.AddDebuggerDisplayAttributes(ModuleDefinition, type);
+        {
+            DebuggerDisplayInjector.AddDebuggerDisplayAttributes(ModuleDefinition, type, ReferenceFinder);
+        }
         foreach (var type in ModuleDefinition.Types.ToList())
-            DebuggerTypeProxyInjector.AddDebuggerTypeProxyAttributes(ModuleDefinition, type);
+        {
+            DebuggerTypeProxyInjector.AddDebuggerTypeProxyAttributes(ModuleDefinition, type, ReferenceFinder);
+        }
 
         RemoveAttributes();
         RemoveReference();
     }
 
-    private void RemoveAttributes()
+    public ReferenceFinder ReferenceFinder;
+
+    void RemoveAttributes()
     {
         ModuleDefinition.Assembly.RemoveFodyAttributes();
 
         foreach (var type in ModuleDefinition.Types)
+        {
             type.RemoveFodyAttributes();
+        }
     }
 
-    private void RemoveReference()
+    void RemoveReference()
     {
         var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "Visualize");
         if (referenceToRemove == null)

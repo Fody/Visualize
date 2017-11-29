@@ -23,7 +23,8 @@ public static class DebuggerTypeProxyInjector
         };
         genericParameterConstructor = typeof(GenericParameter).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
     }
-    public static void AddDebuggerTypeProxyAttributes(ModuleDefinition moduleDefinition, TypeDefinition type)
+
+    public static void AddDebuggerTypeProxyAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
             return;
@@ -34,23 +35,23 @@ public static class DebuggerTypeProxyInjector
         var collectionT = type.Interfaces.FirstOrDefault(i => i.InterfaceType.Name == "ICollection`1");
         if (collectionT != null)
         {
-            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)collectionT.InterfaceType);
+            AddICollectionTProxy(moduleDefinition, type, (GenericInstanceType)collectionT.InterfaceType, referenceFinder);
             return;
         }
 
         var enumerableT = type.Interfaces.FirstOrDefault(i => i.InterfaceType.Name == "IEnumerable`1");
         if (enumerableT != null)
         {
-            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT.InterfaceType);
+            AddIEnumerableTProxy(moduleDefinition, type, (GenericInstanceType)enumerableT.InterfaceType, referenceFinder);
         }
     }
 
-    private static void AddICollectionTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType collectionT)
+    static void AddICollectionTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType collectionT, ReferenceFinder referenceFinder)
     {
         var itemType = collectionT.GenericArguments[0];
         var itemArray = itemType.MakeArrayType();
 
-        var proxyType = CreateProxy(moduleDefinition, type);
+        var proxyType = CreateProxy(moduleDefinition, type, referenceFinder);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
             proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
@@ -98,20 +99,20 @@ public static class DebuggerTypeProxyInjector
                        {
                            GetMethod = getMethod
                        };
-        var debuggerBrowsableAttribute = new CustomAttribute(ReferenceFinder.DebuggerBrowsableAttributeCtor);
-        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
+        var debuggerBrowsableAttribute = new CustomAttribute(referenceFinder.DebuggerBrowsableAttributeCtor);
+        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);
         proxyType.Properties.Add(property);
 
-        AddDebuggerTypeProxyAttribute(type, proxyType);
+        AddDebuggerTypeProxyAttribute(type, proxyType, referenceFinder);
     }
 
-    private static void AddIEnumerableTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType enumerableT)
+    static void AddIEnumerableTProxy(ModuleDefinition moduleDefinition, TypeDefinition type, GenericInstanceType enumerableT, ReferenceFinder referenceFinder)
     {
         var itemType = enumerableT.GenericArguments[0];
         var itemArray = itemType.MakeArrayType();
 
-        var proxyType = CreateProxy(moduleDefinition, type);
+        var proxyType = CreateProxy(moduleDefinition, type, referenceFinder);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
             proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
@@ -119,8 +120,8 @@ public static class DebuggerTypeProxyInjector
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
 
-        var listCtor = ReferenceFinder.ListCtor.MakeHostInstanceGeneric(itemType);
-        var listToArray = ReferenceFinder.ListToArray.MakeHostInstanceGeneric(itemType);
+        var listCtor = referenceFinder.ListCtor.MakeHostInstanceGeneric(itemType);
+        var listToArray = referenceFinder.ListToArray.MakeHostInstanceGeneric(itemType);
 
         var getMethod = new MethodDefinition("get_Items", MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.SpecialName, itemArray);
         getMethod.Body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
@@ -134,12 +135,12 @@ public static class DebuggerTypeProxyInjector
                        {
                            GetMethod = getMethod
                        };
-        var debuggerBrowsableAttribute = new CustomAttribute(ReferenceFinder.DebuggerBrowsableAttributeCtor);
-        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
+        var debuggerBrowsableAttribute = new CustomAttribute(referenceFinder.DebuggerBrowsableAttributeCtor);
+        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);
         proxyType.Properties.Add(property);
 
-        AddDebuggerTypeProxyAttribute(type, proxyType);
+        AddDebuggerTypeProxyAttribute(type, proxyType, referenceFinder);
     }
 
     static GenericParameter CloneGenericParameter(GenericParameter gp)
@@ -147,7 +148,7 @@ public static class DebuggerTypeProxyInjector
         return (GenericParameter)genericParameterConstructor.Invoke(new object[] { gp.Position, gp.Type, gp.Module });
     }
 
-    static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type)
+    static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         var proxyType = new TypeDefinition(
             null,
@@ -158,7 +159,7 @@ public static class DebuggerTypeProxyInjector
 
         type.NestedTypes.Add(proxyType);
 
-        proxyType.CustomAttributes.Add(new CustomAttribute(ReferenceFinder.CompilerGeneratedAttributeCtor));
+        proxyType.CustomAttributes.Add(new CustomAttribute(referenceFinder.CompilerGeneratedAttributeCtor));
 
         if (type.HasGenericParameters)
         {
@@ -194,10 +195,10 @@ public static class DebuggerTypeProxyInjector
         return proxyType;
     }
 
-    static void AddDebuggerTypeProxyAttribute(TypeDefinition type, TypeDefinition proxyType)
+    static void AddDebuggerTypeProxyAttribute(TypeDefinition type, TypeDefinition proxyType, ReferenceFinder referenceFinder)
     {
-        var debuggerTypeProxyAttribute = new CustomAttribute(ReferenceFinder.DebuggerTypeProxyAttributeCtor);
-        debuggerTypeProxyAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.SystemType, proxyType));
+        var debuggerTypeProxyAttribute = new CustomAttribute(referenceFinder.DebuggerTypeProxyAttributeCtor);
+        debuggerTypeProxyAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.SystemType, proxyType));
         type.CustomAttributes.Add(debuggerTypeProxyAttribute);
     }
 }

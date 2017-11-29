@@ -6,24 +6,8 @@ using Mono.Cecil.Rocks;
 
 public static class DebuggerDisplayInjector
 {
-    class DisplayAttributeOrderComparer : IComparer<MemberReference>
-    {
-        readonly IComparer<string> stringComparer = Comparer<string>.Default;
 
-        public int Compare(MemberReference x, MemberReference y)
-        {
-            var xorder = DisplayOrder(x);
-            var yorder = DisplayOrder(y);
-
-            if (xorder < yorder)
-                return -1;
-            if (xorder > yorder)
-                return 1;
-            return stringComparer.Compare(x.Name, y.Name);
-        }
-    }
-
-    public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type)
+    public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.IsEnum || type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
             return;
@@ -46,7 +30,7 @@ public static class DebuggerDisplayInjector
         if (!displayBits.Any())
             return;
 
-        AddSimpleDebuggerDisplayAttribute(moduleDefinition, type);
+        AddSimpleDebuggerDisplayAttribute(moduleDefinition, type, referenceFinder);
 
         if (type.Methods.Any(m => m.Name == "DebuggerDisplay" && m.Parameters.Count == 0))
             return;
@@ -87,7 +71,7 @@ public static class DebuggerDisplayInjector
         }
 
         body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
-        body.Instructions.Add(Instruction.Create(OpCodes.Call, ReferenceFinder.StringFormat));
+        body.Instructions.Add(Instruction.Create(OpCodes.Call, referenceFinder.StringFormat));
         body.Instructions.Add(Instruction.Create(OpCodes.Ret));
         body.InitLocals = true;
         body.OptimizeMacros();
@@ -95,9 +79,9 @@ public static class DebuggerDisplayInjector
         type.Methods.Add(debuggerDisplayMethod);
     }
 
-    static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type)
+    static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
-        var debuggerDisplay = new CustomAttribute(ReferenceFinder.DebuggerDisplayAttributeCtor);
+        var debuggerDisplay = new CustomAttribute(referenceFinder.DebuggerDisplayAttributeCtor);
         debuggerDisplay.ConstructorArguments.Add(new CustomAttributeArgument(moduleDefinition.TypeSystem.String, "{DebuggerDisplay(),nq}"));
         type.CustomAttributes.Add(debuggerDisplay);
     }
@@ -117,19 +101,6 @@ public static class DebuggerDisplayInjector
         return member.Name;
     }
 
-    static int DisplayOrder(MemberReference member)
-    {
-        var customAttributeProvider = member as ICustomAttributeProvider;
-
-        var display = customAttributeProvider?.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
-        if (display == null)
-            return 0;
-
-        if (display.Properties.Any(p => p.Name == "Order"))
-            return (int)display.Properties.First(p => p.Name == "Order").Argument.Value;
-
-        return 0;
-    }
 
     readonly static HashSet<string> basicNames = new HashSet<string>
     {
