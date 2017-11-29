@@ -4,13 +4,13 @@
                   class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>,
                   [mscorlib]System.Collections.IEnumerable
 {
+  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
+                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .custom instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 42 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..BAssemblyToPro
                                                                                                                         63 65 73 73 2E 43 6C 61 73 73 57 69 74 68 49 43   // cess.ClassWithIC
                                                                                                                         6F 6C 6C 65 63 74 69 6F 6E 2B 3C 43 6C 61 73 73   // ollection+<Class
                                                                                                                         57 69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E   // WithICollection>
                                                                                                                         50 72 6F 78 79 00 00 )                            // Proxy..
-  .custom instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
-                                                                                                 6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
   .class auto ansi sealed nested private beforefieldinit '<ClassWithICollection>Proxy'
          extends [mscorlib]System.Object
   {
@@ -62,11 +62,8 @@
   {
     // Code size       19 (0x13)
     .maxstack  2
-    .locals init ([0] class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> V_0)
-    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
-    .line 12,12 : 9,10 'AssemblyToProcess\\ClassWithICollection.cs'
+    .locals init (class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> V_0)
     IL_0000:  nop
-    .line 13,13 : 13,60 ''
     IL_0001:  ldc.i4.0
     IL_0002:  ldc.i4.s   10
     IL_0004:  call       class [mscorlib]System.Collections.Generic.IEnumerable`1<int32> [System.Core]System.Linq.Enumerable::Range(int32,
@@ -74,7 +71,6 @@
     IL_0009:  callvirt   instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class [mscorlib]System.Collections.Generic.IEnumerable`1<int32>::GetEnumerator()
     IL_000e:  stloc.0
     IL_000f:  br.s       IL_0011
-    .line 14,14 : 9,10 ''
     IL_0011:  ldloc.0
     IL_0012:  ret
   } // end of method ClassWithICollection::GetEnumerator
@@ -85,15 +81,12 @@
     .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
     // Code size       12 (0xc)
     .maxstack  1
-    .locals init ([0] class [mscorlib]System.Collections.IEnumerator V_0)
-    .line 17,17 : 9,10 ''
+    .locals init (class [mscorlib]System.Collections.IEnumerator V_0)
     IL_0000:  nop
-    .line 18,18 : 13,36 ''
     IL_0001:  ldarg.0
     IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithICollection::GetEnumerator()
     IL_0007:  stloc.0
     IL_0008:  br.s       IL_000a
-    .line 19,19 : 9,10 ''
     IL_000a:  ldloc.0
     IL_000b:  ret
   } // end of method ClassWithICollection::System.Collections.IEnumerable.GetEnumerator
@@ -102,9 +95,7 @@
   {
     // Code size       7 (0x7)
     .maxstack  8
-    .line 22,22 : 9,10 ''
     IL_0000:  nop
-    .line 23,23 : 13,49 ''
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Add
@@ -113,9 +104,7 @@
   {
     // Code size       7 (0x7)
     .maxstack  8
-    .line 27,27 : 9,10 ''
     IL_0000:  nop
-    .line 28,28 : 13,49 ''
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Clear
@@ -124,9 +113,7 @@
   {
     // Code size       7 (0x7)
     .maxstack  8
-    .line 32,32 : 9,10 ''
     IL_0000:  nop
-    .line 33,33 : 13,49 ''
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Contains
@@ -136,9 +123,7 @@
   {
     // Code size       7 (0x7)
     .maxstack  8
-    .line 37,37 : 9,10 ''
     IL_0000:  nop
-    .line 38,38 : 13,49 ''
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::CopyTo
@@ -147,7 +132,6 @@
   {
     // Code size       3 (0x3)
     .maxstack  8
-    .line 41,41 : 29,31 ''
     IL_0000:  ldc.i4.s   10
     IL_0002:  ret
   } // end of method ClassWithICollection::get_Count
@@ -156,7 +140,6 @@
   {
     // Code size       2 (0x2)
     .maxstack  8
-    .line 43,43 : 35,39 ''
     IL_0000:  ldc.i4.1
     IL_0001:  ret
   } // end of method ClassWithICollection::get_IsReadOnly
@@ -165,9 +148,7 @@
   {
     // Code size       7 (0x7)
     .maxstack  8
-    .line 46,46 : 9,10 ''
     IL_0000:  nop
-    .line 47,47 : 13,49 ''
     IL_0001:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0006:  throw
   } // end of method ClassWithICollection::Remove

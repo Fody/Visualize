@@ -90,18 +90,7 @@ public static class CecilExtensions
 
     public static bool IsRefType(this TypeReference arg)
     {
-        if (arg.IsValueType)
-        {
-            return false;
-        }
-        var byReferenceType = arg as ByReferenceType;
-        if (byReferenceType != null && byReferenceType.ElementType.IsValueType)
-        {
-            return false;
-        }
-
-        var pointerType = arg as PointerType;
-        if (pointerType != null && pointerType.ElementType.IsValueType)
+        if (arg.IsValueType)        {            return false;        }        if (arg is ByReferenceType byReferenceType && byReferenceType.ElementType.IsValueType)        {            return false;        }        if (arg is PointerType pointerType && pointerType.ElementType.IsValueType)
         {
             return false;
         }

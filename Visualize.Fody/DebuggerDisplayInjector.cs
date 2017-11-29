@@ -6,9 +6,9 @@ using Mono.Cecil.Rocks;
 
 public static class DebuggerDisplayInjector
 {
-    private class DisplayAttributeOrderComparer : IComparer<MemberReference>
+    class DisplayAttributeOrderComparer : IComparer<MemberReference>
     {
-        private readonly IComparer<string> stringComparer = Comparer<string>.Default;
+        readonly IComparer<string> stringComparer = Comparer<string>.Default;
 
         public int Compare(MemberReference x, MemberReference y)
         {
@@ -33,9 +33,9 @@ public static class DebuggerDisplayInjector
             .Cast<MemberReference>();
         var props = type.Properties
             .Where(p =>
-                p.GetMethod != null && 
-                p.GetMethod.IsPublic && 
-                !p.GetMethod.HasParameters && 
+                p.GetMethod != null &&
+                p.GetMethod.IsPublic &&
+                !p.GetMethod.HasParameters &&
                 CanPrint(p.PropertyType))
             .Cast<MemberReference>();
 
@@ -69,15 +69,14 @@ public static class DebuggerDisplayInjector
             body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, i));
             body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
 
-            var field = displayBits[i] as FieldDefinition;
-            if (field != null)
+            if (displayBits[i] is FieldDefinition field)
             {
                 body.Instructions.Add(Instruction.Create(OpCodes.Ldfld, field));
                 if (!field.FieldType.IsRefType())
                     body.Instructions.Add(Instruction.Create(OpCodes.Box, field.FieldType));
             }
-            var property = displayBits[i] as PropertyDefinition;
-            if (property != null)
+
+            if (displayBits[i] is PropertyDefinition property)
             {
                 body.Instructions.Add(Instruction.Create(OpCodes.Call, property.GetMethod));
                 if (!property.PropertyType.IsRefType())
@@ -96,17 +95,16 @@ public static class DebuggerDisplayInjector
         type.Methods.Add(debuggerDisplayMethod);
     }
 
-    private static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type)
+    static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type)
     {
         var debuggerDisplay = new CustomAttribute(ReferenceFinder.DebuggerDisplayAttributeCtor);
         debuggerDisplay.ConstructorArguments.Add(new CustomAttributeArgument(moduleDefinition.TypeSystem.String, "{DebuggerDisplay(),nq}"));
         type.CustomAttributes.Add(debuggerDisplay);
     }
 
-    private static string DisplayName(MemberReference member)
+    static string DisplayName(MemberReference member)
     {
-        var customAttributeProvider = member as ICustomAttributeProvider;
-        if (customAttributeProvider == null)
+        if (!(member is ICustomAttributeProvider customAttributeProvider))
             return member.Name;
 
         var display = customAttributeProvider.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
@@ -119,7 +117,7 @@ public static class DebuggerDisplayInjector
         return member.Name;
     }
 
-    private static int DisplayOrder(MemberReference member)
+    static int DisplayOrder(MemberReference member)
     {
         var customAttributeProvider = member as ICustomAttributeProvider;
 
@@ -133,24 +131,24 @@ public static class DebuggerDisplayInjector
         return 0;
     }
 
-    private readonly static HashSet<string> basicNames = new HashSet<string>
+    readonly static HashSet<string> basicNames = new HashSet<string>
     {
-        typeof (short).Name,
-        typeof (ushort).Name,
-        typeof (int).Name,
-        typeof (uint).Name,
-        typeof (long).Name,
-        typeof (ulong).Name,
-        typeof (float).Name,
-        typeof (double).Name,
-        typeof (bool).Name,
-        typeof (byte).Name,
-        typeof (sbyte).Name,
-        typeof (char).Name,
-        typeof (string).Name,
+        typeof(short).Name,
+        typeof(ushort).Name,
+        typeof(int).Name,
+        typeof(uint).Name,
+        typeof(long).Name,
+        typeof(ulong).Name,
+        typeof(float).Name,
+        typeof(double).Name,
+        typeof(bool).Name,
+        typeof(byte).Name,
+        typeof(sbyte).Name,
+        typeof(char).Name,
+        typeof(string).Name,
     };
 
-    private static bool CanPrint(TypeReference typeReference)
+    static bool CanPrint(TypeReference typeReference)
     {
         if (basicNames.Contains(typeReference.Name))
             return true;

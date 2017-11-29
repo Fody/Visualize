@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Mono.Cecil;
 
 public class MockAssemblyResolver : IAssemblyResolver

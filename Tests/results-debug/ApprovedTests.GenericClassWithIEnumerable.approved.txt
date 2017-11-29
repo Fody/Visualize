@@ -48,9 +48,7 @@
       .override [mscorlib]System.Collections.IEnumerator::MoveNext
       // Code size       26 (0x1a)
       .maxstack  2
-      .locals init ([0] int32 V_0)
-      .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
-      .line 16707566,16707566 : 0,0 'AssemblyToProcess\\GenericClassWithIEnumerable.cs'
+      .locals init (int32 V_0)
       IL_0000:  ldarg.0
       IL_0001:  ldfld      int32 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>1__state'
       IL_0006:  stloc.0
@@ -63,9 +61,7 @@
       IL_0010:  ldarg.0
       IL_0011:  ldc.i4.m1
       IL_0012:  stfld      int32 class AssemblyToProcess.GenericClassWithIEnumerable`1/'<GetEnumerator>d__0'<!T>::'<>1__state'
-      .line 10,10 : 9,10 ''
       IL_0017:  nop
-      .line 11,11 : 13,25 ''
       IL_0018:  ldc.i4.0
       IL_0019:  ret
     } // end of method '<GetEnumerator>d__0'::MoveNext
@@ -149,6 +145,11 @@
           instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!T> 
           GetEnumerator() cil managed
   {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.IteratorStateMachineAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 43 41 73 73 65 6D 62 6C 79 54 6F 50 72 6F   // ..CAssemblyToPro
+                                                                                                                                          63 65 73 73 2E 47 65 6E 65 72 69 63 43 6C 61 73   // cess.GenericClas
+                                                                                                                                          73 57 69 74 68 49 45 6E 75 6D 65 72 61 62 6C 65   // sWithIEnumerable
+                                                                                                                                          60 31 2B 3C 47 65 74 45 6E 75 6D 65 72 61 74 6F   // `1+<GetEnumerato
+                                                                                                                                          72 3E 64 5F 5F 30 00 00 )                         // r>d__0..
     // Code size       14 (0xe)
     .maxstack  8
     IL_0000:  ldc.i4.0
@@ -165,15 +166,12 @@
     .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
     // Code size       12 (0xc)
     .maxstack  1
-    .locals init ([0] class [mscorlib]System.Collections.IEnumerator V_0)
-    .line 15,15 : 9,10 ''
+    .locals init (class [mscorlib]System.Collections.IEnumerator V_0)
     IL_0000:  nop
-    .line 16,16 : 13,36 ''
     IL_0001:  ldarg.0
     IL_0002:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> class AssemblyToProcess.GenericClassWithIEnumerable`1<!T>::GetEnumerator()
     IL_0007:  stloc.0
     IL_0008:  br.s       IL_000a
-    .line 17,17 : 9,10 ''
     IL_000a:  ldloc.0
     IL_000b:  ret
   } // end of method GenericClassWithIEnumerable`1::System.Collections.IEnumerable.GetEnumerator

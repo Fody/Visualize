@@ -4,18 +4,18 @@
     <id>Visualize.Fody</id>
     <version>$version$</version>
     <title>Visualize.Fody</title>
-    <authors>Cameron MacFarland</authors>
-    <owners>Cameron MacFarland</owners>
+    <authors>Cameron MacFarland, Simon Cropp</authors>
+    <owners>Cameron MacFarland, Simon Cropp</owners>
     <developmentDependency>true</developmentDependency>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>http://github.com/Fody/Visualize</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://raw.github.com/Fody/Visualize/master/Icons/package_icon.png</iconUrl>
+    <iconUrl>https://raw.github.com/Fody/Visualize/master/package_icon.png</iconUrl>
     <description>Adds debugger attributes to help visualize objects.</description>
     <language>en-AU</language>
     <tags>Debugging, ILWeaving, Fody, Cecil</tags>
     <dependencies>
-      <dependency id="Fody" version="2.0.0"/>
+      <dependency id="Fody" version="2.2.1"/>
     </dependencies>
   </metadata>
 </package>

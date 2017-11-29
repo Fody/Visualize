@@ -1,3 +1,4 @@
+// ReSharper disable NotAccessedField.Local
 namespace AssemblyToProcess
 {
     public class ClassWithProperties
@@ -10,10 +11,10 @@ namespace AssemblyToProcess
 
         internal string Internal { get; set; }
 
-        private string setterOnly;
+        string setterOnly;
         public string SetterOnly
         {
-            set { setterOnly = value; }
+            set => setterOnly = value;
         }
 
         public SimpleEnum SimpleEnum { get; set; }

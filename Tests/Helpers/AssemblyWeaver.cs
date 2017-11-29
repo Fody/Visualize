@@ -10,13 +10,9 @@ public static class AssemblyWeaver
 
     static AssemblyWeaver()
     {
-        BeforeAssemblyPath = Path.GetFullPath(Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\AssemblyToProcess\bin\Debug\AssemblyToProcess.dll"));
+        BeforeAssemblyPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "AssemblyToProcess.dll");
         BeforeAssemblyPathSymbols = Path.ChangeExtension(BeforeAssemblyPath, "pdb");
 
-#if (!DEBUG)
-        BeforeAssemblyPath = BeforeAssemblyPath.Replace("Debug", "Release");
-        BeforeAssemblyPathSymbols = BeforeAssemblyPathSymbols.Replace("Debug", "Release");
-#endif
         AfterAssemblyPath = BeforeAssemblyPath.Replace(".dll", "2.dll");
         AfterAssemblyPathSymbols = Path.ChangeExtension(AfterAssemblyPath, "pdb");
 
@@ -48,12 +44,12 @@ public static class AssemblyWeaver
     public static string BeforeAssemblyPathSymbols;
     public static string AfterAssemblyPathSymbols;
 
-    private static void LogInfo(string error)
+    static void LogInfo(string error)
     {
         Infos.Add(error);
     }
 
-    private static void LogError(string error)
+    static void LogError(string error)
     {
         Errors.Add(error);
     }

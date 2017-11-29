@@ -4,75 +4,102 @@
 
 ## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
-![Visualize Icon - An eye](https://raw.github.com/Fody/Visualize/master/Icons/package_icon.png)
+![Visualize Icon - An eye](https://raw.github.com/Fody/Visualize/master/package_icon.png)
 
 Adds debugger attributes to help visualize objects.
 
 
-## The nuget package
+## Usage
 
-https://nuget.org/packages/Visualize.Fody/
+See also [Fody usage](https://github.com/Fody/Fody#usage).
 
-    PM> Install-Package Visualize.Fody
+
+### NuGet installation
+
+Install the [Visualize.Fody NuGet package](https://nuget.org/packages/Visualize.Fody/) and update the [Fody NuGet package](https://nuget.org/packages/Fody/):
+
+```
+PM> Install-Package Visualize.Fody
+PM> Update-Package Fody
+```
+
+The `Update-Package Fody` is required since NuGet always defaults to the oldest, and most buggy, version of any dependency.
+
+
+### Add to FodyWeavers.xml
+
+Add `<Visualize/>` to [FodyWeavers.xml](https://github.com/Fody/Fody#add-fodyweaversxml)
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Weavers>
+  <Visualize/>
+</Weavers>
+```
+
 
 ### Your Code
 
-    public class Example1
+```c#
+public class Example1
+{
+    public string Name { get; set; }
+    public int Number { get; set; }
+}
+
+public class Example2 : IEnumerable<int>
+{
+    public IEnumerator<int> GetEnumerator()
     {
-        public string Name { get; set; }
-        public int Number { get; set; }
+        return Enumerable.Range(0, 10).GetEnumerator();
     }
 
-    public class Example2 : IEnumerable<int>
+    IEnumerator IEnumerable.GetEnumerator()
     {
-        public IEnumerator<int> GetEnumerator()
-        {
-            return Enumerable.Range(0, 10).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        return GetEnumerator();
     }
+}
+```
 
 ### What gets compiled
 
-    [DebuggerDisplay("Name = {Name} | Number = {Number}")]
-    public class Example1
+```c#
+[DebuggerDisplay("Name = {Name} | Number = {Number}")]
+public class Example1
+{
+    public string Name { get; set; }
+    public int Number { get; set; }
+}
+
+[DebuggerTypeProxy(typeof(<Example2>Proxy))]
+public class Example2 : IEnumerable<int>
+{
+    private sealed class <Example2>Proxy
     {
-        public string Name { get; set; }
-        public int Number { get; set; }
+        private readonly Example2 original;
+
+        public <Example2>Proxy(Example2 original)
+        {
+            this.original = original;
+        }
+
+        public int[] Items
+        {
+            get { return new List<int>(original).ToArray(); }
+        }
     }
 
-    [DebuggerTypeProxy(typeof(<Example2>Proxy))]
-    public class Example2 : IEnumerable<int>
+    public IEnumerator<int> GetEnumerator()
     {
-        private sealed class <Example2>Proxy
-        {
-            private readonly Example2 original;
-
-            public <Example2>Proxy(Example2 original)
-            {
-                this.original = original;
-            }
-
-            public int[] Items
-            {
-                get { return new List<int>(original).ToArray(); }
-            }
-        }
-
-        public IEnumerator<int> GetEnumerator()
-        {
-            return Enumerable.Range(0, 10).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        return Enumerable.Range(0, 10).GetEnumerator();
     }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
+```
 
 
 ## Links
@@ -80,11 +107,6 @@ https://nuget.org/packages/Visualize.Fody/
   * [DebuggerDisplayAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggerdisplayattribute.aspx) on MSDN
   * [DebuggerTypeProxyAttribute](http://msdn.microsoft.com/en-us/library/system.diagnostics.debuggertypeproxyattribute.aspx) on MSDN
   * [Enhancing Debugging with the Debugger Display Attributes](http://msdn.microsoft.com/en-us/library/ms228992.aspx)
-
-
-## Contributors
-
-  * [Cameron MacFarland](https://github.com/distantcam)
 
 
 ## Icon

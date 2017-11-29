@@ -147,7 +147,7 @@ public static class DebuggerTypeProxyInjector
         return (GenericParameter)genericParameterConstructor.Invoke(new object[] { gp.Position, gp.Type, gp.Module });
     }
 
-    private static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type)
+    static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type)
     {
         var proxyType = new TypeDefinition(
             null,
@@ -194,7 +194,7 @@ public static class DebuggerTypeProxyInjector
         return proxyType;
     }
 
-    private static void AddDebuggerTypeProxyAttribute(TypeDefinition type, TypeDefinition proxyType)
+    static void AddDebuggerTypeProxyAttribute(TypeDefinition type, TypeDefinition proxyType)
     {
         var debuggerTypeProxyAttribute = new CustomAttribute(ReferenceFinder.DebuggerTypeProxyAttributeCtor);
         debuggerTypeProxyAttribute.ConstructorArguments.Add(new CustomAttributeArgument(ReferenceFinder.SystemType, proxyType));
