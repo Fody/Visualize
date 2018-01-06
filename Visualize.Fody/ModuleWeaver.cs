@@ -1,38 +1,36 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Mono.Cecil;
+using Fody;
 
-public class ModuleWeaver
+public class ModuleWeaver : BaseModuleWeaver
 {
-    public Action<string> LogInfo { get; set; }
-    public Action<string> LogError { get; set; }
-    public ModuleDefinition ModuleDefinition { get; set; }
-    public IAssemblyResolver AssemblyResolver { get; set; }
-    public string[] DefineConstants { get; set; }
-
-    public ModuleWeaver()
+    public override void Execute()
     {
-        LogInfo = s => { };
-        LogError = s => { };
-        DefineConstants = new string[0];
-    }
-
-    public void Execute()
-    {
-        ReferenceFinder = new ReferenceFinder();
-        ReferenceFinder.FindReferences(AssemblyResolver, ModuleDefinition);
+        ReferenceFinder = new ReferenceFinder
+        {
+            LogInfo = LogInfo
+        };
+        ReferenceFinder.FindReferences(this);
 
         foreach (var type in ModuleDefinition.Types)
         {
             DebuggerDisplayInjector.AddDebuggerDisplayAttributes(ModuleDefinition, type, ReferenceFinder);
         }
+
         foreach (var type in ModuleDefinition.Types.ToList())
         {
             DebuggerTypeProxyInjector.AddDebuggerTypeProxyAttributes(ModuleDefinition, type, ReferenceFinder);
         }
 
         RemoveAttributes();
-        RemoveReference();
+    }
+
+    public override IEnumerable<string> GetAssembliesForScanning()
+    {
+        yield return "mscorlib";
+        yield return "System";
+        yield return "System.Runtime";
+        yield return "netstandard";
     }
 
     public ReferenceFinder ReferenceFinder;
@@ -47,16 +45,5 @@ public class ModuleWeaver
         }
     }
 
-    void RemoveReference()
-    {
-        var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "Visualize");
-        if (referenceToRemove == null)
-        {
-            LogInfo("\tNo reference to 'Visualize.dll' found. References not modified.");
-            return;
-        }
-
-        ModuleDefinition.AssemblyReferences.Remove(referenceToRemove);
-        LogInfo("\tRemoving reference to 'Visualize.dll'.");
-    }
+    public override bool ShouldCleanReference => true;
 }

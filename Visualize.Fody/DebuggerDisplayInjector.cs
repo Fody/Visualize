@@ -10,7 +10,9 @@ public static class DebuggerDisplayInjector
     public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.IsEnum || type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
+        {
             return;
+        }
 
         var fields = type.Fields
             .Where(f => f.IsPublic && !f.HasConstant && CanPrint(f.FieldType))
@@ -28,12 +30,16 @@ public static class DebuggerDisplayInjector
             .ToList();
 
         if (!displayBits.Any())
+        {
             return;
+        }
 
         AddSimpleDebuggerDisplayAttribute(moduleDefinition, type, referenceFinder);
 
         if (type.Methods.Any(m => m.Name == "DebuggerDisplay" && m.Parameters.Count == 0))
+        {
             return;
+        }
 
         var debuggerDisplayMethod = new MethodDefinition("DebuggerDisplay", MethodAttributes.Private | MethodAttributes.HideBySig | MethodAttributes.SpecialName, moduleDefinition.TypeSystem.String);
         var body = debuggerDisplayMethod.Body;
@@ -57,14 +63,18 @@ public static class DebuggerDisplayInjector
             {
                 body.Instructions.Add(Instruction.Create(OpCodes.Ldfld, field));
                 if (!field.FieldType.IsRefType())
+                {
                     body.Instructions.Add(Instruction.Create(OpCodes.Box, field.FieldType));
+                }
             }
 
             if (displayBits[i] is PropertyDefinition property)
             {
                 body.Instructions.Add(Instruction.Create(OpCodes.Call, property.GetMethod));
                 if (!property.PropertyType.IsRefType())
+                {
                     body.Instructions.Add(Instruction.Create(OpCodes.Box, property.PropertyType));
+                }
             }
 
             body.Instructions.Add(Instruction.Create(OpCodes.Stelem_Ref));
@@ -89,20 +99,26 @@ public static class DebuggerDisplayInjector
     static string DisplayName(MemberReference member)
     {
         if (!(member is ICustomAttributeProvider customAttributeProvider))
+        {
             return member.Name;
+        }
 
         var display = customAttributeProvider.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == "System.ComponentModel.DataAnnotations.DisplayAttribute");
         if (display == null)
+        {
             return member.Name;
+        }
 
         if (display.Properties.Any(p => p.Name == "Name"))
+        {
             return display.Properties.First(p => p.Name == "Name").Argument.Value.ToString();
+        }
 
         return member.Name;
     }
 
 
-    readonly static HashSet<string> basicNames = new HashSet<string>
+    static HashSet<string> basicNames = new HashSet<string>
     {
         typeof(short).Name,
         typeof(ushort).Name,
@@ -122,19 +138,25 @@ public static class DebuggerDisplayInjector
     static bool CanPrint(TypeReference typeReference)
     {
         if (basicNames.Contains(typeReference.Name))
+        {
             return true;
+        }
 
         if (typeReference.IsArray)
+        {
             return false;
+        }
 
         var typeDefinition = typeReference.Resolve();
 
         if (typeDefinition.IsEnum)
+        {
             return true;
+        }
 
         if (typeReference.IsGenericInstance && typeReference.Name == "Nullable`1")
         {
-            var genericType = (GenericInstanceType)typeReference;
+            var genericType = (GenericInstanceType) typeReference;
             return basicNames.Contains(genericType.GenericArguments[0].Name);
         }
 

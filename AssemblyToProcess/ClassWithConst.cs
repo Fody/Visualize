@@ -1,7 +1,4 @@
-﻿namespace AssemblyToProcess
+﻿public class ClassWithConst
 {
-    public class ClassWithConst
-    {
-        public const string Constant = "ConstantValue";
-    }
+    public const string Constant = "ConstantValue";
 }

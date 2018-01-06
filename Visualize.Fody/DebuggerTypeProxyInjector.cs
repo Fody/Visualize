@@ -16,7 +16,6 @@ public static class DebuggerTypeProxyInjector
 
     static DebuggerTypeProxyInjector()
     {
-
         var types = new[]
         {
             typeof(int), typeof(GenericParameterType ),typeof( ModuleDefinition )
@@ -27,10 +26,14 @@ public static class DebuggerTypeProxyInjector
     public static void AddDebuggerTypeProxyAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
+        {
             return;
+        }
 
         if (type.CustomAttributes.All(c => c.AttributeType.Name != "DebuggerEnumerableTypeAttribute"))
+        {
             return;
+        }
 
         var collectionT = type.Interfaces.FirstOrDefault(i => i.InterfaceType.Name == "ICollection`1");
         if (collectionT != null)
@@ -54,7 +57,9 @@ public static class DebuggerTypeProxyInjector
         var proxyType = CreateProxy(moduleDefinition, type, referenceFinder);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
+        {
             proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
+        }
 
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
@@ -115,7 +120,9 @@ public static class DebuggerTypeProxyInjector
         var proxyType = CreateProxy(moduleDefinition, type, referenceFinder);
         TypeReference proxyTypeRef = proxyType;
         if (type.HasGenericParameters)
+        {
             proxyTypeRef = proxyType.MakeGenericInstanceType(type.GenericParameters.Select(CloneGenericParameter).ToArray());
+        }
 
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
@@ -173,7 +180,9 @@ public static class DebuggerTypeProxyInjector
 
         var originalType = moduleDefinition.ImportReference(type);
         if (type.HasGenericParameters)
+        {
             originalType = originalType.MakeGenericInstanceType(proxyType.GenericParameters.ToArray());
+        }
 
         var field = new FieldDefinition("original", FieldAttributes.Private | FieldAttributes.InitOnly, originalType);
         proxyType.Fields.Add(field);

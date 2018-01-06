@@ -28,7 +28,7 @@ public static class CecilExtensions
         return type.Properties.Where(x => (x.GetMethod == null || !x.GetMethod.IsAbstract) && (x.SetMethod == null || !x.SetMethod.IsAbstract));
     }
 
-    private static MethodReference CloneMethodWithDeclaringType(MethodDefinition methodDef, TypeReference declaringTypeRef)
+    static MethodReference CloneMethodWithDeclaringType(MethodDefinition methodDef, TypeReference declaringTypeRef)
     {
         if (!declaringTypeRef.IsGenericInstance || methodDef == null)
         {
@@ -80,17 +80,31 @@ public static class CecilExtensions
         };
 
         foreach (var parameter in self.Parameters)
+        {
             reference.Parameters.Add(new ParameterDefinition(parameter.ParameterType));
+        }
 
         foreach (var genericParam in self.GenericParameters)
+        {
             reference.GenericParameters.Add(new GenericParameter(genericParam.Name, reference));
+        }
 
         return reference;
     }
 
     public static bool IsRefType(this TypeReference arg)
     {
-        if (arg.IsValueType)        {            return false;        }        if (arg is ByReferenceType byReferenceType && byReferenceType.ElementType.IsValueType)        {            return false;        }        if (arg is PointerType pointerType && pointerType.ElementType.IsValueType)
+        if (arg.IsValueType)
+        {
+            return false;
+        }
+
+        if (arg is ByReferenceType byReferenceType && byReferenceType.ElementType.IsValueType)
+        {
+            return false;
+        }
+
+        if (arg is PointerType pointerType && pointerType.ElementType.IsValueType)
         {
             return false;
         }

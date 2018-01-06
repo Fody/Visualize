@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace AssemblyToProcess
+[Visualize.DebuggerEnumerableType]
+public class GenericClassWithIEnumerable<T> : IEnumerable<T>
 {
-    [Visualize.DebuggerEnumerableType]
-    public class GenericClassWithIEnumerable<T> : IEnumerable<T>
+    public IEnumerator<T> GetEnumerator()
     {
-        public IEnumerator<T> GetEnumerator()
-        {
-            yield break;
-        }
+        yield break;
+    }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

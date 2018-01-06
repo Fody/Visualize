@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
 public class AssertEx
 {
@@ -13,6 +13,6 @@ public class AssertEx
 
         Assert.NotNull(attribute);
 
-        Assert.AreEqual(message, attribute.ConstructorArguments.First().Value.ToString());
+        Assert.Equal(message, attribute.ConstructorArguments.First().Value.ToString());
     }
 }

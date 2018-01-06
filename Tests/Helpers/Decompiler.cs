@@ -27,7 +27,9 @@ public static class Decompiler
     public static string Decompile(string assemblyPath, string identifier = "")
     {
         if (!string.IsNullOrEmpty(identifier))
+        {
             identifier = "/item:" + identifier;
+        }
 
         using (var process = Process.Start(new ProcessStartInfo(exePath, $"\"{assemblyPath}\" /text /linenum {identifier}")
         {

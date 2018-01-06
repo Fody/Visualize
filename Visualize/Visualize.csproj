@@ -2,11 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <Authors>Cameron MacFarland, Simon Cropp</Authors>
+    <PackageTags>Debugging, ILWeaving, Fody, Cecil</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\CommonAssemblyInfo.cs" />
+    <PackageReference Include="Fody" Version="2.3.17" />
+    <PackageReference Include="FodyPackaging" Version="2.3.17" PrivateAssets="All" />
   </ItemGroup>
 </Project>
