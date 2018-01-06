@@ -105,7 +105,7 @@ public static class DebuggerTypeProxyInjector
                            GetMethod = getMethod
                        };
         var debuggerBrowsableAttribute = new CustomAttribute(referenceFinder.DebuggerBrowsableAttributeCtor);
-        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
+        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, (int)DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);
         proxyType.Properties.Add(property);
 
@@ -143,7 +143,7 @@ public static class DebuggerTypeProxyInjector
                            GetMethod = getMethod
                        };
         var debuggerBrowsableAttribute = new CustomAttribute(referenceFinder.DebuggerBrowsableAttributeCtor);
-        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, DebuggerBrowsableState.RootHidden));
+        debuggerBrowsableAttribute.ConstructorArguments.Add(new CustomAttributeArgument(referenceFinder.DebuggerBrowsableStateType, (int) DebuggerBrowsableState.RootHidden));
         property.CustomAttributes.Add(debuggerBrowsableAttribute);
         proxyType.Properties.Add(property);
 
