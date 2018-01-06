@@ -34,6 +34,15 @@ public class WeaverTests
     }
 
     [Fact]
+    public void InterfaceShouldNotGetDebuggerDisplay()
+    {
+        var simpleEnumType = testResult.Assembly.GetType("AnInterface", true);
+        var fullName = typeof(DebuggerDisplayAttribute).FullName;
+        Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
+            $"Enums should not get decorated with '{typeof(DebuggerDisplayAttribute).Name}'.");
+    }
+
+    [Fact]
     public void ClassWithExistingAttributes()
     {
         var type = testResult.Assembly.GetType("ClassWithExistingAttributes", true);

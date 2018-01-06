@@ -12,17 +12,25 @@ public class ModuleWeaver : BaseModuleWeaver
         };
         ReferenceFinder.FindReferences(this);
 
-        foreach (var type in ModuleDefinition.Types)
+        var types = ModuleDefinition.GetTypes()
+            .Where(x => !x.IsInterface)
+            .ToList();
+        foreach (var type in types)
         {
             DebuggerDisplayInjector.AddDebuggerDisplayAttributes(ModuleDefinition, type, ReferenceFinder);
         }
 
-        foreach (var type in ModuleDefinition.Types.ToList())
+        foreach (var type in types)
         {
             DebuggerTypeProxyInjector.AddDebuggerTypeProxyAttributes(ModuleDefinition, type, ReferenceFinder);
         }
 
-        RemoveAttributes();
+        ModuleDefinition.Assembly.RemoveFodyAttributes();
+
+        foreach (var type in types)
+        {
+            type.RemoveFodyAttributes();
+        }
     }
 
     public override IEnumerable<string> GetAssembliesForScanning()
@@ -34,16 +42,6 @@ public class ModuleWeaver : BaseModuleWeaver
     }
 
     public ReferenceFinder ReferenceFinder;
-
-    void RemoveAttributes()
-    {
-        ModuleDefinition.Assembly.RemoveFodyAttributes();
-
-        foreach (var type in ModuleDefinition.Types)
-        {
-            type.RemoveFodyAttributes();
-        }
-    }
 
     public override bool ShouldCleanReference => true;
 }
