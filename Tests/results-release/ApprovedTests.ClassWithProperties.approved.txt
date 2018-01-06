@@ -22,8 +22,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
-    .line 5,5 : 29,33 'AssemblyToProcess\\ClassWithProperties.cs'
     IL_0000:  ldarg.0
     IL_0001:  ldfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
     IL_0006:  ret
@@ -34,7 +32,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 5,5 : 34,38 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      int32 AssemblyToProcess.ClassWithProperties::'<Number>k__BackingField'
@@ -46,7 +43,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .line 6,6 : 32,36 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
     IL_0006:  ret
@@ -57,7 +53,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 6,6 : 37,41 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<String>k__BackingField'
@@ -69,7 +64,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .line 7,7 : 31,35 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      bool AssemblyToProcess.ClassWithProperties::'<Boolean>k__BackingField'
     IL_0006:  ret
@@ -80,7 +74,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 7,7 : 36,40 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      bool AssemblyToProcess.ClassWithProperties::'<Boolean>k__BackingField'
@@ -92,7 +85,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .line 9,9 : 32,36 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::'<Nullable>k__BackingField'
     IL_0006:  ret
@@ -103,7 +95,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 9,9 : 37,41 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      valuetype [mscorlib]System.Nullable`1<int32> AssemblyToProcess.ClassWithProperties::'<Nullable>k__BackingField'
@@ -115,7 +106,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .line 11,11 : 36,40 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
     IL_0006:  ret
@@ -126,7 +116,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 11,11 : 41,45 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::'<Internal>k__BackingField'
@@ -137,11 +126,9 @@
   {
     // Code size       8 (0x8)
     .maxstack  8
-    .line 16,16 : 19,38 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      string AssemblyToProcess.ClassWithProperties::setterOnly
-    .line 16,16 : 39,40 ''
     IL_0007:  ret
   } // end of method ClassWithProperties::set_SetterOnly
   .method public hidebysig specialname instance valuetype AssemblyToProcess.SimpleEnum 
@@ -150,7 +137,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       7 (0x7)
     .maxstack  8
-    .line 19,19 : 40,44 ''
     IL_0000:  ldarg.0
     IL_0001:  ldfld      valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::'<SimpleEnum>k__BackingField'
     IL_0006:  ret
@@ -161,7 +147,6 @@
     .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
     // Code size       8 (0x8)
     .maxstack  8
-    .line 19,19 : 45,49 ''
     IL_0000:  ldarg.0
     IL_0001:  ldarg.1
     IL_0002:  stfld      valuetype AssemblyToProcess.SimpleEnum AssemblyToProcess.ClassWithProperties::'<SimpleEnum>k__BackingField'

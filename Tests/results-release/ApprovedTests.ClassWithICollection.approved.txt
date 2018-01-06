@@ -62,8 +62,6 @@
   {
     // Code size       14 (0xe)
     .maxstack  8
-    .language '{3F5162F8-07C6-11D3-9053-00C04FA302A1}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
-    .line 13,13 : 13,60 'AssemblyToProcess\\ClassWithICollection.cs'
     IL_0000:  ldc.i4.0
     IL_0001:  ldc.i4.s   10
     IL_0003:  call       class [mscorlib]System.Collections.Generic.IEnumerable`1<int32> [System.Core]System.Linq.Enumerable::Range(int32,
@@ -78,7 +76,6 @@
     .override [mscorlib]System.Collections.IEnumerable::GetEnumerator
     // Code size       7 (0x7)
     .maxstack  8
-    .line 18,18 : 13,36 ''
     IL_0000:  ldarg.0
     IL_0001:  call       instance class [mscorlib]System.Collections.Generic.IEnumerator`1<int32> AssemblyToProcess.ClassWithICollection::GetEnumerator()
     IL_0006:  ret
@@ -88,7 +85,6 @@
   {
     // Code size       6 (0x6)
     .maxstack  8
-    .line 23,23 : 13,49 ''
     IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0005:  throw
   } // end of method ClassWithICollection::Add
@@ -97,7 +93,6 @@
   {
     // Code size       6 (0x6)
     .maxstack  8
-    .line 28,28 : 13,49 ''
     IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0005:  throw
   } // end of method ClassWithICollection::Clear
@@ -106,7 +101,6 @@
   {
     // Code size       6 (0x6)
     .maxstack  8
-    .line 33,33 : 13,49 ''
     IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0005:  throw
   } // end of method ClassWithICollection::Contains
@@ -116,7 +110,6 @@
   {
     // Code size       6 (0x6)
     .maxstack  8
-    .line 38,38 : 13,49 ''
     IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0005:  throw
   } // end of method ClassWithICollection::CopyTo
@@ -125,7 +118,6 @@
   {
     // Code size       3 (0x3)
     .maxstack  8
-    .line 41,41 : 29,31 ''
     IL_0000:  ldc.i4.s   10
     IL_0002:  ret
   } // end of method ClassWithICollection::get_Count
@@ -134,7 +126,6 @@
   {
     // Code size       2 (0x2)
     .maxstack  8
-    .line 43,43 : 35,39 ''
     IL_0000:  ldc.i4.1
     IL_0001:  ret
   } // end of method ClassWithICollection::get_IsReadOnly
@@ -143,7 +134,6 @@
   {
     // Code size       6 (0x6)
     .maxstack  8
-    .line 47,47 : 13,49 ''
     IL_0000:  newobj     instance void [mscorlib]System.NotImplementedException::.ctor()
     IL_0005:  throw
   } // end of method ClassWithICollection::Remove

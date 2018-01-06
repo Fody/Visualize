@@ -2,10 +2,8 @@
 * text 
 
 # Don't check these into the repo as LF to work around TeamCity bug
-*.xml          -text 
-*.targets      -text
-*.ps1      -text
-*.approved.txt -text
+*.xml     -text 
+*.targets -text
 
 # Custom for Visual Studio
 *.cs     diff=csharp
@@ -22,4 +20,3 @@
 *.ico binary
 *.snk binary
 *.pdb binary
-*.svg binary

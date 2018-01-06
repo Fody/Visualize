@@ -1,9 +1,5 @@
-﻿
-namespace AssemblyToProcess
+﻿public enum SimpleEnum
 {
-    public enum SimpleEnum
-    {
-        None = 0,
-        Value1
-    }
+    None = 0,
+    Value1
 }
