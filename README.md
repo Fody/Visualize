@@ -4,7 +4,7 @@
 
 ## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
-![Visualize Icon - An eye](https://raw.github.com/Fody/Visualize/master/package_icon.png)
+![Visualize Icon - An eye](https://raw.githubusercontent.com/Fody/Visualize/master/package_icon.png)
 
 Adds debugger attributes to help visualize objects.
 
