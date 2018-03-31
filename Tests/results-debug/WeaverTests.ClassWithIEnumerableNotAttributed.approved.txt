@@ -34,54 +34,54 @@
 .stackreserve 0x00100000
 .subsystem 0x0003       // WINDOWS_CUI
 .corflags 0x00000001    //  ILONLY
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [System.ComponentModel.DataAnnotations]System.ComponentModel.DataAnnotations.DisplayAttribute::.ctor() = ( 01 00 02 00 54 0E 04 4E 61 6D 65 09 4C 61 73 74   // ....T..Name.Last
                                                                                                                                                  20 4E 61 6D 65 54 08 05 4F 72 64 65 72 00 00 00   //  NameT..Order...
                                                                                                                                                  00 ) 
-.custom (method instance string ClassWithDataAnnotations::get_LastName()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [System.ComponentModel.DataAnnotations]System.ComponentModel.DataAnnotations.DisplayAttribute::.ctor() = ( 01 00 02 00 54 0E 04 4E 61 6D 65 0A 46 69 72 73   // ....T..Name.Firs
                                                                                                                                                  74 20 4E 61 6D 65 54 08 05 4F 72 64 65 72 01 00   // t NameT..Order..
                                                                                                                                                  00 00 ) 
-.custom (method instance void ClassWithDataAnnotations::set_LastName(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+.custom (method instance string ClassWithDataAnnotations::get_LastName()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (ClassWithDataAnnotations) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                           6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
-.custom (method instance string ClassWithDataAnnotations::get_FirstName()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+.custom (method instance void ClassWithDataAnnotations::set_LastName(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (ClassWithExistingAttributes) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 07 4E 6F 74 68 69 6E 67 00 00 )             // ...Nothing..
-.custom (method instance void ClassWithDataAnnotations::set_FirstName(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (method instance string ClassWithDataAnnotations::get_FirstName()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (ClassWithICollection) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                       6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
 .custom (ClassWithICollection) instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 30 43 6C 61 73 73 57 69 74 68 49 43 6F 6C   // ..0ClassWithICol
                                                                                                                                              6C 65 63 74 69 6F 6E 2B 3C 43 6C 61 73 73 57 69   // lection+<ClassWi
                                                                                                                                              74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 3E 50 72   // thICollection>Pr
                                                                                                                                              6F 78 79 00 00 )                                  // oxy..
+.custom (method instance void ClassWithDataAnnotations::set_FirstName(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (ClassWithICollection/'<ClassWithICollection>Proxy') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 03 00 00 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (ClassWithIEnumerable) instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 30 43 6C 61 73 73 57 69 74 68 49 45 6E 75   // ..0ClassWithIEnu
                                                                                                                                              6D 65 72 61 62 6C 65 2B 3C 43 6C 61 73 73 57 69   // merable+<ClassWi
                                                                                                                                              74 68 49 45 6E 75 6D 65 72 61 62 6C 65 3E 50 72   // thIEnumerable>Pr
                                                                                                                                              6F 78 79 00 00 )                                  // oxy..
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 03 00 00 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (ClassWithIEnumerable/'<ClassWithIEnumerable>Proxy') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (method instance string ClassWithExistingAttributes::get_String()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
-.custom (ClassWithIEnumerable/'<ClassWithIEnumerable>Proxy') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (method instance void ClassWithExistingAttributes::set_String(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (ClassWithIndexor) instance void [mscorlib]System.Reflection.DefaultMemberAttribute::.ctor(string) = ( 01 00 04 49 74 65 6D 00 00 )                      // ...Item..
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (ClassWithProperties) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                      6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
-.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
 .custom (GenericClassWithICollection`1) instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 40 47 65 6E 65 72 69 63 43 6C 61 73 73 57   // ..@GenericClassW
                                                                                                                                                       69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 60 31   // ithICollection`1
                                                                                                                                                       2B 3C 47 65 6E 65 72 69 63 43 6C 61 73 73 57 69   // +<GenericClassWi
@@ -89,9 +89,9 @@
                                                                                                                                                       6F 78 79 00 00 )                                  // oxy..
 .custom (GenericClassWithICollection`1) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                                6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
-.custom (GenericClassWithICollection`1/'<GetEnumerator>d__0') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Diagnostics.DebuggerBrowsableAttribute::.ctor(valuetype [mscorlib]System.Diagnostics.DebuggerBrowsableState) = ( 01 00 00 00 00 00 00 00 ) 
+.custom (GenericClassWithICollection`1/'<GetEnumerator>d__0') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (GenericClassWithICollection`1/'<GenericClassWithICollection>Proxy') instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (GenericClassWithIEnumerable`1) instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 40 47 65 6E 65 72 69 63 43 6C 61 73 73 57   // ..@GenericClassW
                                                                                                                                                       69 74 68 49 45 6E 75 6D 65 72 61 62 6C 65 60 31   // ithIEnumerable`1
