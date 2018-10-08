@@ -10,19 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <PackageReference Include="FodyHelpers" Version="3.2.6" />
+    <PackageReference Include="FodyHelpers" Version="3.2.9" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <ProjectReference Include="..\Visualize.Fody\Visualize.Fody.csproj" />
     <ProjectReference Include="..\Visualize\Visualize.csproj" />
     <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="ApprovalTests" Version="3.0.13" />
-    <PackageReference Include="ApprovalUtilities" Version="3.0.13" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <Compile Remove="ApprovalTestConfig.cs" />
+    <PackageReference Include="ApprovalTests" Version="3.0.18" />
+    <PackageReference Include="ApprovalUtilities" Version="3.0.18" />
   </ItemGroup>
 </Project>
