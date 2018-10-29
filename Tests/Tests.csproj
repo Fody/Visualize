@@ -16,6 +16,5 @@
     <ProjectReference Include="..\Visualize\Visualize.csproj" />
     <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
     <PackageReference Include="ApprovalTests" Version="3.0.18" />
-    <PackageReference Include="ApprovalUtilities" Version="3.0.18" />
   </ItemGroup>
 </Project>
