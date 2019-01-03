@@ -74,6 +74,7 @@
 .custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (ClassWithProperties) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                      6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
+.custom (UNKNOWN_OWNER) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (GenericClassWithICollection`1) instance void [mscorlib]System.Diagnostics.DebuggerDisplayAttribute::.ctor(string) = ( 01 00 16 7B 44 65 62 75 67 67 65 72 44 69 73 70   // ...{DebuggerDisp
                                                                                                                                6C 61 79 28 29 2C 6E 71 7D 00 00 )                // lay(),nq}..
 .custom (GenericClassWithICollection`1) instance void [mscorlib]System.Diagnostics.DebuggerTypeProxyAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 40 47 65 6E 65 72 69 63 43 6C 61 73 73 57   // ..@GenericClassW
@@ -105,6 +106,8 @@
 .custom (method instance void ClassWithProperties::set_Internal(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (method instance valuetype SimpleEnum ClassWithProperties::get_SimpleEnum()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (method instance void ClassWithProperties::set_SimpleEnum(valuetype SimpleEnum)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (method string ClassWithStatic::get_Property()) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
+.custom (method void ClassWithStatic::set_Property(string)) instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 ) 
 .custom (method instance class [mscorlib]System.Collections.Generic.IEnumerator`1<!0> GenericClassWithICollection`1::GetEnumerator()) instance void [mscorlib]System.Runtime.CompilerServices.IteratorStateMachineAttribute::.ctor(class [mscorlib]System.Type) = ( 01 00 31 47 65 6E 65 72 69 63 43 6C 61 73 73 57   // ..1GenericClassW
                                                                                                                                                                                                                                                                     69 74 68 49 43 6F 6C 6C 65 63 74 69 6F 6E 60 31   // ithICollection`1
                                                                                                                                                                                                                                                                     2B 3C 47 65 74 45 6E 75 6D 65 72 61 74 6F 72 3E   // +<GetEnumerator>

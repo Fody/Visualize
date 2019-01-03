@@ -9,18 +9,23 @@ public static class DebuggerDisplayInjector
 
     public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
-        if (type.IsEnum || type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
+        if (type.IsEnum ||
+            type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
         {
             return;
         }
 
         var fields = type.Fields
-            .Where(f => f.IsPublic && !f.HasConstant && CanPrint(f.FieldType))
+            .Where(f => f.IsPublic &&
+                        !f.HasConstant &&
+                        !f.IsStatic &&
+                        CanPrint(f.FieldType))
             .Cast<MemberReference>();
         var props = type.Properties
             .Where(p =>
                 p.GetMethod != null &&
                 p.GetMethod.IsPublic &&
+                !p.GetMethod.IsStatic &&
                 !p.GetMethod.HasParameters &&
                 CanPrint(p.PropertyType))
             .Cast<MemberReference>();
@@ -48,41 +53,42 @@ public static class DebuggerDisplayInjector
         body.Variables.Add(arrayVar);
 
         body.SimplifyMacros();
-        body.Instructions.Add(Instruction.Create(OpCodes.Ldstr, string.Join(" | ", displayBits.Select((m, i) => $"{DisplayName(m)} = \"{{{i}}}\""))));
-        body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, displayBits.Count));
-        body.Instructions.Add(Instruction.Create(OpCodes.Newarr, moduleDefinition.TypeSystem.Object));
-        body.Instructions.Add(Instruction.Create(OpCodes.Stloc, arrayVar));
+        var instructions = body.Instructions;
+        instructions.Add(Instruction.Create(OpCodes.Ldstr, string.Join(" | ", displayBits.Select((m, i) => $"{DisplayName(m)} = \"{{{i}}}\""))));
+        instructions.Add(Instruction.Create(OpCodes.Ldc_I4, displayBits.Count));
+        instructions.Add(Instruction.Create(OpCodes.Newarr, moduleDefinition.TypeSystem.Object));
+        instructions.Add(Instruction.Create(OpCodes.Stloc, arrayVar));
 
         for (var i = 0; i < displayBits.Count; i++)
         {
-            body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
-            body.Instructions.Add(Instruction.Create(OpCodes.Ldc_I4, i));
-            body.Instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
+            instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
+            instructions.Add(Instruction.Create(OpCodes.Ldc_I4, i));
+            instructions.Add(Instruction.Create(OpCodes.Ldarg_0));
 
             if (displayBits[i] is FieldDefinition field)
             {
-                body.Instructions.Add(Instruction.Create(OpCodes.Ldfld, field));
+                instructions.Add(Instruction.Create(OpCodes.Ldfld, field));
                 if (!field.FieldType.IsRefType())
                 {
-                    body.Instructions.Add(Instruction.Create(OpCodes.Box, field.FieldType));
+                    instructions.Add(Instruction.Create(OpCodes.Box, field.FieldType));
                 }
             }
 
             if (displayBits[i] is PropertyDefinition property)
             {
-                body.Instructions.Add(Instruction.Create(OpCodes.Call, property.GetMethod));
+                instructions.Add(Instruction.Create(OpCodes.Call, property.GetMethod));
                 if (!property.PropertyType.IsRefType())
                 {
-                    body.Instructions.Add(Instruction.Create(OpCodes.Box, property.PropertyType));
+                    instructions.Add(Instruction.Create(OpCodes.Box, property.PropertyType));
                 }
             }
 
-            body.Instructions.Add(Instruction.Create(OpCodes.Stelem_Ref));
+            instructions.Add(Instruction.Create(OpCodes.Stelem_Ref));
         }
 
-        body.Instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
-        body.Instructions.Add(Instruction.Create(OpCodes.Call, referenceFinder.StringFormat));
-        body.Instructions.Add(Instruction.Create(OpCodes.Ret));
+        instructions.Add(Instruction.Create(OpCodes.Ldloc, arrayVar));
+        instructions.Add(Instruction.Create(OpCodes.Call, referenceFinder.StringFormat));
+        instructions.Add(Instruction.Create(OpCodes.Ret));
         body.InitLocals = true;
         body.OptimizeMacros();
 
@@ -116,7 +122,6 @@ public static class DebuggerDisplayInjector
 
         return member.Name;
     }
-
 
     static HashSet<string> basicNames = new HashSet<string>
     {
