@@ -8,15 +8,15 @@ class DisplayAttributeOrderComparer : IComparer<MemberReference>
 
     public int Compare(MemberReference x, MemberReference y)
     {
-        var xorder = DisplayOrder(x);
-        var yorder = DisplayOrder(y);
+        var xOrder = DisplayOrder(x);
+        var yOrder = DisplayOrder(y);
 
-        if (xorder < yorder)
+        if (xOrder < yOrder)
         {
             return -1;
         }
 
-        if (xorder > yorder)
+        if (xOrder > yOrder)
         {
             return 1;
         }

@@ -4,7 +4,7 @@ using Fody;
 using Xunit;
 #pragma warning disable 618
 
-#if (NET46)
+#if (NET472)
 using ApprovalTests;
 using ApprovalTests.Namers;
 #if(DEBUG)
@@ -50,7 +50,7 @@ public class WeaverTests
         AssertEx.DebuggerDisplayMessage(type, "Nothing");
     }
 
-#if (NET46)
+#if (NET472)
 
     [Fact]
     public void ClassWithProperties()
