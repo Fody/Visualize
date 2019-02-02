@@ -2,7 +2,7 @@
 [![NuGet Status](http://img.shields.io/nuget/v/Visualize.Fody.svg?style=flat&max-age=86400)](https://www.nuget.org/packages/Visualize.Fody/)
 
 
-## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
+## This is an add-in for [Fody](https://github.com/Fody/Home/)
 
 ![Visualize Icon - An eye](https://raw.githubusercontent.com/Fody/Visualize/master/package_icon.png)
 
@@ -11,7 +11,7 @@ Adds debugger attributes to help visualize objects.
 
 ## Usage
 
-See also [Fody usage](https://github.com/Fody/Fody#usage).
+See also [Fody usage](https://github.com/Fody/Home/blob/master/pages/usage.md).
 
 
 ### NuGet installation
@@ -28,7 +28,7 @@ The `Install-Package Fody` is required since NuGet always defaults to the oldest
 
 ### Add to FodyWeavers.xml
 
-Add `<Visualize/>` to [FodyWeavers.xml](https://github.com/Fody/Fody#add-fodyweaversxml)
+Add `<Visualize/>` to [FodyWeavers.xml](https://github.com/Fody/Home/blob/master/pages/usage.md#add-fodyweaversxml)
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
