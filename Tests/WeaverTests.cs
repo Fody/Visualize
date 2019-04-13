@@ -2,8 +2,7 @@
 using System.Linq;
 using Fody;
 using Xunit;
-#pragma warning disable 618
-
+using Xunit.Abstractions;
 #if (NET472)
 using ApprovalTests;
 using ApprovalTests.Namers;
@@ -14,7 +13,8 @@ using ApprovalTests.Namers;
 #endif
 #endif
 
-public class WeaverTests
+public class WeaverTests :
+    XunitLoggingBase
 {
     static TestResult testResult;
 
@@ -107,4 +107,8 @@ public class WeaverTests
     }
 
 #endif
+    public WeaverTests(ITestOutputHelper output) :
+        base(output)
+    {
+    }
 }
