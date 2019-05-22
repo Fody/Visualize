@@ -8,7 +8,7 @@
     <PackageTags>Debugging, ILWeaving, Fody, Cecil</PackageTags>
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Fody/Visualize/master/package_icon.png</PackageIconUrl>
-    <PackageProjectUrl>http://github.com/Fody/Visualize</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Fody/Visualize</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Fody" Version="5.0.6" PrivateAssets="None" />
