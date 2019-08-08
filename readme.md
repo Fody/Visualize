@@ -110,4 +110,4 @@ public class Example2 : IEnumerable<int>
 
 ## Icon
 
-[Eye](http://thenounproject.com/noun/eye/#icon-No7467) designed by [Nicolas Ramallo](http://thenounproject.com/nicografico) from The Noun Project
+[Eye](https://thenounproject.com/noun/eye/#icon-No7467) designed by [Nicolas Ramallo](https://thenounproject.com/nicografico) from [The Noun Project](https://thenounproject.com).
