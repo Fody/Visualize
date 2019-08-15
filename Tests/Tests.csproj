@@ -16,6 +16,6 @@
     <ProjectReference Include="..\Visualize.Fody\Visualize.Fody.csproj" />
     <ProjectReference Include="..\Visualize\Visualize.csproj" />
     <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
-    <PackageReference Include="ApprovalTests" Version="4.0.0" />
+    <PackageReference Include="ApprovalTests" Version="4.1.0" />
   </ItemGroup>
 </Project>
