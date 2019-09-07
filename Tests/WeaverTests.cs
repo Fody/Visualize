@@ -14,7 +14,7 @@ using ApprovalTests.Namers;
 #endif
 
 public class WeaverTests :
-    XunitLoggingBase
+    XunitApprovalBase
 {
     static TestResult testResult;
 
