@@ -55,55 +55,55 @@ public class WeaverTests :
     [Fact]
     public void ClassWithProperties()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithProperties"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithProperties"));
     }
 
     [Fact]
     public void ClassWithConst()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithConst"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithConst"));
     }
 
     [Fact]
     public void ClassWithIndexor()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
     }
 
     [Fact]
     public void ClassWithDataAnnotations()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithDataAnnotations"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithDataAnnotations"));
     }
 
     [Fact]
     public void ClassWithIEnumerable()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
     }
 
     [Fact]
     public void ClassWithICollection()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithICollection"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithICollection"));
     }
 
     [Fact]
     public void GenericClassWithIEnumerable()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
     }
 
     [Fact]
     public void GenericClassWithICollection()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
     }
 
     [Fact]
     public void ClassWithIEnumerableNotAttributed()
     {
-        Approvals.Verify(Decompiler.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
+        Approvals.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
     }
 
 #endif

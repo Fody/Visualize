@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using Xunit;
 
-public class AssertEx
+public static class AssertEx
 {
     public static void DebuggerDisplayMessage(Type type, string message)
     {
