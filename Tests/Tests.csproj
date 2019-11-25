@@ -2,20 +2,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net472;netcoreapp2.2</TargetFrameworks>
-    <Optimize>false</Optimize>
     <DisableFody>true</DisableFody>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FodyHelpers" Version="6.0.5" />
     <PackageReference Include="Xunit" Version="2.4.1" />
-    <PackageReference Include="Xunit.ApprovalTests" Version="4.6.0" />
+    <PackageReference Include="XunitContext" Version="1.5.1" />
+    <PackageReference Include="Verify.Xunit" Version="1.0.0-beta.11" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
     <ProjectReference Include="..\Visualize.Fody\Visualize.Fody.csproj" />
     <ProjectReference Include="..\Visualize\Visualize.csproj" />
     <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
-    <PackageReference Include="ApprovalTests" Version="4.4.0" />
   </ItemGroup>
 </Project>
