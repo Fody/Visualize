@@ -43,8 +43,6 @@ public class WeaverTests :
         AssertEx.DebuggerDisplayMessage(type, "Nothing");
     }
 
-#if (NET472)
-
     [Fact]
     public Task ClassWithProperties()
     {
@@ -99,7 +97,6 @@ public class WeaverTests :
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
     }
 
-#endif
     public WeaverTests(ITestOutputHelper output) :
         base(output)
     {
