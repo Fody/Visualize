@@ -101,5 +101,6 @@ public class WeaverTests :
         base(output)
     {
         UniqueForAssemblyConfiguration();
+        UniqueForRuntime();
     }
 }
