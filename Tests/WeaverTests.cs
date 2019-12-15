@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Fody;
+using Verify;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
@@ -100,7 +101,7 @@ public class WeaverTests :
     public WeaverTests(ITestOutputHelper output) :
         base(output)
     {
-        UniqueForAssemblyConfiguration();
-        UniqueForRuntime();
+        SharedVerifySettings.UniqueForAssemblyConfiguration();
+        SharedVerifySettings.UniqueForRuntime();
     }
 }
