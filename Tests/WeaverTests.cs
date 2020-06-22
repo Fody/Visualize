@@ -5,8 +5,8 @@ using Fody;
 using VerifyTests;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
+[UsesVerify]
 public class WeaverTests
 {
     static TestResult testResult;
@@ -97,10 +97,9 @@ public class WeaverTests
         return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
     }
 
-    public WeaverTests(ITestOutputHelper output) :
-        base(output)
+    public WeaverTests()
     {
-        SharedVerifySettings.UniqueForAssemblyConfiguration();
-        SharedVerifySettings.UniqueForRuntime();
+        VerifierSettings.UniqueForAssemblyConfiguration();
+        VerifierSettings.UniqueForRuntime();
     }
 }

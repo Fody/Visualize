@@ -8,7 +8,7 @@ public class ModuleWeaver : BaseModuleWeaver
     {
         ReferenceFinder = new ReferenceFinder
         {
-            LogInfo = x => base.WriteInfo(x) 
+            LogInfo = x => base.WriteInfo(x)
         };
         ReferenceFinder.FindReferences(this);
 
