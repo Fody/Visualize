@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Fody;
-using Verify;
+using VerifyTests;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
 
-public class WeaverTests :
-    VerifyBase
+public class WeaverTests
 {
     static TestResult testResult;
 
@@ -47,55 +46,55 @@ public class WeaverTests :
     [Fact]
     public Task ClassWithProperties()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithProperties"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithProperties"));
     }
 
     [Fact]
     public Task ClassWithConst()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithConst"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithConst"));
     }
 
     [Fact]
     public Task ClassWithIndexor()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
     }
 
     [Fact]
     public Task ClassWithDataAnnotations()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithDataAnnotations"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithDataAnnotations"));
     }
 
     [Fact]
     public Task ClassWithIEnumerable()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
     }
 
     [Fact]
     public Task ClassWithICollection()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithICollection"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithICollection"));
     }
 
     [Fact]
     public Task GenericClassWithIEnumerable()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
     }
 
     [Fact]
     public Task GenericClassWithICollection()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
     }
 
     [Fact]
     public Task ClassWithIEnumerableNotAttributed()
     {
-        return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
+        return Verifier.Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
     }
 
     public WeaverTests(ITestOutputHelper output) :
