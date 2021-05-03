@@ -5,9 +5,3 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: Verify.Xunit
-    versions:
-    - 10.7.0
-    - 10.9.0
-    - 11.2.0
