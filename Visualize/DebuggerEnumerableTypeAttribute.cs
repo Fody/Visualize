@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Visualize
+﻿namespace Visualize
 {
     /// <summary>
     /// Marks a type as an enumerable type and hence no DebuggerTypeProxy is added.

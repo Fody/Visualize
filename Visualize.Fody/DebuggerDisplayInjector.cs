@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 
 public static class DebuggerDisplayInjector
 {
-
     public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.IsEnum ||

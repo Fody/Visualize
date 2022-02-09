@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 
 [Visualize.DebuggerEnumerableType]
 public class GenericClassWithICollection<T> : ICollection<T>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using Xunit;
+﻿using System.Diagnostics;
 
 public static class AssertEx
 {

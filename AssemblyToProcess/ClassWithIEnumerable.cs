@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 [Visualize.DebuggerEnumerableType]
 public class ClassWithIEnumerable : IEnumerable<int>

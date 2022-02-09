@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/Fody/Visualize</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Using Remove="System.Net.Http" />
     <PackageReference Include="Fody" Version="6.6.0" PrivateAssets="none" />
     <PackageReference Include="FodyPackaging" Version="6.6.0" PrivateAssets="All" />
   </ItemGroup>

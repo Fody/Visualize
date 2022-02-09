@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 
 [Visualize.DebuggerEnumerableType]
 public class GenericClassWithIEnumerable<T> : IEnumerable<T>

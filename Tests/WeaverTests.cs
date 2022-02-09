@@ -1,10 +1,5 @@
 ﻿using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Fody;
-using VerifyTests;
-using VerifyXunit;
-using Xunit;
 
 [UsesVerify]
 public class WeaverTests
