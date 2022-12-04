@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Version>1.2.0</Version>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>11</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 </Project>
