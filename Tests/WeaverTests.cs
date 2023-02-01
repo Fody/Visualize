@@ -91,10 +91,4 @@ public class WeaverTests
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
     }
-
-    public WeaverTests()
-    {
-        VerifierSettings.UniqueForAssemblyConfiguration();
-        VerifierSettings.UniqueForRuntime();
-    }
 }

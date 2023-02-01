@@ -4,6 +4,7 @@
     <TargetFrameworks>net48;net6</TargetFrameworks>
     <DisableFody>true</DisableFody>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
