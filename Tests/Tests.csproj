@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net48;net7.0</TargetFrameworks>
     <DisableFody>true</DisableFody>
-    <LangVersion>11</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FodyHelpers" Version="6.6.4" />

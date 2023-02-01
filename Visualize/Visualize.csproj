@@ -9,7 +9,6 @@
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Fody/Visualize/master/package_icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Fody/Visualize</PackageProjectUrl>
-    <LangVersion>11</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
