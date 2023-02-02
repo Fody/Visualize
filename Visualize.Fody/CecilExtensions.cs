@@ -41,12 +41,12 @@ public static class CecilExtensions
 
         foreach (var paramDef in methodDef.Parameters)
         {
-            methodRef.Parameters.Add(new ParameterDefinition(paramDef.Name, paramDef.Attributes, paramDef.ParameterType));
+            methodRef.Parameters.Add(new(paramDef.Name, paramDef.Attributes, paramDef.ParameterType));
         }
 
         foreach (var genParamDef in methodDef.GenericParameters)
         {
-            methodRef.GenericParameters.Add(new GenericParameter(genParamDef.Name, methodRef));
+            methodRef.GenericParameters.Add(new(genParamDef.Name, methodRef));
         }
 
         return methodRef;
@@ -78,12 +78,12 @@ public static class CecilExtensions
 
         foreach (var parameter in self.Parameters)
         {
-            reference.Parameters.Add(new ParameterDefinition(parameter.ParameterType));
+            reference.Parameters.Add(new(parameter.ParameterType));
         }
 
         foreach (var genericParam in self.GenericParameters)
         {
-            reference.GenericParameters.Add(new GenericParameter(genericParam.Name, reference));
+            reference.GenericParameters.Add(new(genericParam.Name, reference));
         }
 
         return reference;

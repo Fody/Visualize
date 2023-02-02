@@ -18,7 +18,7 @@ public class WeaverTests
         var simpleEnumType = testResult.Assembly.GetType("SimpleEnum", true);
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
         Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{typeof(DebuggerDisplayAttribute).Name}'.");
+            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
     [Fact]
@@ -27,7 +27,7 @@ public class WeaverTests
         var simpleEnumType = testResult.Assembly.GetType("AnInterface", true);
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
         Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{typeof(DebuggerDisplayAttribute).Name}'.");
+            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
     [Fact]
