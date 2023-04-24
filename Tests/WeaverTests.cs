@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Fody;
+#pragma warning disable CS0618
 
 [UsesVerify]
 public class WeaverTests
