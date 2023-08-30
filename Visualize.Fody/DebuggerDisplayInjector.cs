@@ -7,7 +7,7 @@ public static class DebuggerDisplayInjector
     public static void AddDebuggerDisplayAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         if (type.IsEnum ||
-            type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerDisplayAttribute"))
+            type.CustomAttributes.Any(c => c.AttributeType.Name is "CompilerGeneratedAttribute" or "DebuggerDisplayAttribute"))
         {
             return;
         }
@@ -95,13 +95,13 @@ public static class DebuggerDisplayInjector
     static void AddSimpleDebuggerDisplayAttribute(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
         var debuggerDisplay = new CustomAttribute(referenceFinder.DebuggerDisplayAttributeCtor);
-        debuggerDisplay.ConstructorArguments.Add(new CustomAttributeArgument(moduleDefinition.TypeSystem.String, "{DebuggerDisplay(),nq}"));
+        debuggerDisplay.ConstructorArguments.Add(new(moduleDefinition.TypeSystem.String, "{DebuggerDisplay(),nq}"));
         type.CustomAttributes.Add(debuggerDisplay);
     }
 
     static string DisplayName(MemberReference member)
     {
-        if (!(member is ICustomAttributeProvider customAttributeProvider))
+        if (member is not ICustomAttributeProvider customAttributeProvider)
         {
             return member.Name;
         }
@@ -120,21 +120,21 @@ public static class DebuggerDisplayInjector
         return member.Name;
     }
 
-    static HashSet<string> basicNames = new HashSet<string>
+    static HashSet<string> basicNames = new()
     {
-        typeof(short).Name,
-        typeof(ushort).Name,
-        typeof(int).Name,
-        typeof(uint).Name,
-        typeof(long).Name,
-        typeof(ulong).Name,
-        typeof(float).Name,
-        typeof(double).Name,
-        typeof(bool).Name,
-        typeof(byte).Name,
-        typeof(sbyte).Name,
-        typeof(char).Name,
-        typeof(string).Name,
+        nameof(Int16),
+        nameof(UInt16),
+        nameof(Int32),
+        nameof(UInt32),
+        nameof(Int64),
+        nameof(UInt64),
+        nameof(Single),
+        nameof(Double),
+        nameof(Boolean),
+        nameof(Byte),
+        nameof(SByte),
+        nameof(Char),
+        nameof(String),
     };
 
     static bool CanPrint(TypeReference typeReference)

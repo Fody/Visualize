@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Fody;
+#pragma warning disable CS0618
 
 [UsesVerify]
 public class WeaverTests
@@ -18,7 +19,7 @@ public class WeaverTests
         var simpleEnumType = testResult.Assembly.GetType("SimpleEnum", true);
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
         Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{typeof(DebuggerDisplayAttribute).Name}'.");
+            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
     [Fact]
@@ -27,7 +28,7 @@ public class WeaverTests
         var simpleEnumType = testResult.Assembly.GetType("AnInterface", true);
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
         Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{typeof(DebuggerDisplayAttribute).Name}'.");
+            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
     [Fact]
@@ -90,11 +91,5 @@ public class WeaverTests
     public Task ClassWithIEnumerableNotAttributed()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
-    }
-
-    public WeaverTests()
-    {
-        VerifierSettings.UniqueForAssemblyConfiguration();
-        VerifierSettings.UniqueForRuntime();
     }
 }
