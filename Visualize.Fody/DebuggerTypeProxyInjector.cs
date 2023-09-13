@@ -24,7 +24,7 @@ public static class DebuggerTypeProxyInjector
 
     public static void AddDebuggerTypeProxyAttributes(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
-        if (type.CustomAttributes.Any(c => c.AttributeType.Name == "CompilerGeneratedAttribute" || c.AttributeType.Name == "DebuggerTypeProxyAttribute"))
+        if (type.CustomAttributes.Any(c => c.AttributeType.Name is "CompilerGeneratedAttribute" or "DebuggerTypeProxyAttribute"))
         {
             return;
         }
@@ -63,9 +63,9 @@ public static class DebuggerTypeProxyInjector
         var field = proxyType.Fields[0];
         var fieldRef = new FieldReference(field.Name, field.FieldType, proxyTypeRef);
 
-        var countProperty = type.Properties.First(p => p.Name == "Count" || p.Name == "System.Collections.ICollection.Count");
+        var countProperty = type.Properties.First(p => p.Name is "Count" or "System.Collections.ICollection.Count");
         MethodReference countMethod = countProperty.GetMethod;
-        MethodReference copyToMethod = type.Methods.First(p => p.Name == "CopyTo" || p.Name == "System.Collections.ICollection.CopyTo");
+        MethodReference copyToMethod = type.Methods.First(p => p.Name is "CopyTo" or "System.Collections.ICollection.CopyTo");
 
         if (type.HasGenericParameters)
         {
