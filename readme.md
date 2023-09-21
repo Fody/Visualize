@@ -5,6 +5,8 @@
 
 Adds debugger attributes to help visualize objects.
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 
 ### This is an add-in for [Fody](https://github.com/Fody/Home/)
 
