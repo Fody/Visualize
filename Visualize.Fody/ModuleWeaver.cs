@@ -6,12 +6,12 @@ public class ModuleWeaver : BaseModuleWeaver
     {
         ReferenceFinder = new ReferenceFinder
         {
-            LogInfo = x => base.WriteInfo(x)
+            LogInfo = _ => base.WriteInfo(_)
         };
         ReferenceFinder.FindReferences(this);
 
         var types = ModuleDefinition.GetTypes()
-            .Where(x => !x.IsInterface)
+            .Where(_ => !_.IsInterface)
             .ToList();
         foreach (var type in types)
         {
