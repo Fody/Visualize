@@ -7,7 +7,7 @@ public static class CecilExtensions
     {
         var customAttributes = definition.CustomAttributes;
 
-        var attributes = customAttributes.Where(x => x.AttributeType.Namespace == "Visualize").ToList();
+        var attributes = customAttributes.Where(_ => _.AttributeType.Namespace == "Visualize").ToList();
 
         foreach (var attribute in attributes)
         {
