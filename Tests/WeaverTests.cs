@@ -8,8 +8,8 @@ public class WeaverTests
 
     static WeaverTests()
     {
-        var weavingTask = new ModuleWeaver();
-        testResult = weavingTask.ExecuteTestRun("AssemblyToProcess.dll");
+        var weaver = new ModuleWeaver();
+        testResult = weaver.ExecuteTestRun("AssemblyToProcess.dll");
     }
 
     [Fact]
