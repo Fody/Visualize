@@ -120,8 +120,8 @@ public static class DebuggerDisplayInjector
         return member.Name;
     }
 
-    static HashSet<string> basicNames = new()
-    {
+    static HashSet<string> basicNames =
+    [
         nameof(Int16),
         nameof(UInt16),
         nameof(Int32),
@@ -134,8 +134,8 @@ public static class DebuggerDisplayInjector
         nameof(Byte),
         nameof(SByte),
         nameof(Char),
-        nameof(String),
-    };
+        nameof(String)
+    ];
 
     static bool CanPrint(TypeReference typeReference)
     {

@@ -149,10 +149,8 @@ public static class DebuggerTypeProxyInjector
         AddDebuggerTypeProxyAttribute(type, proxyType, referenceFinder);
     }
 
-    static GenericParameter CloneGenericParameter(GenericParameter gp)
-    {
-        return (GenericParameter)genericParameterConstructor.Invoke(new object[] { gp.Position, gp.Type, gp.Module });
-    }
+    static GenericParameter CloneGenericParameter(GenericParameter gp) =>
+        (GenericParameter)genericParameterConstructor.Invoke([gp.Position, gp.Type, gp.Module]);
 
     static TypeDefinition CreateProxy(ModuleDefinition moduleDefinition, TypeDefinition type, ReferenceFinder referenceFinder)
     {
