@@ -20,10 +20,7 @@ public static class DebuggerDisplayInjector
             .Cast<MemberReference>();
         var props = type.Properties
             .Where(p =>
-                p.GetMethod != null &&
-                p.GetMethod.IsPublic &&
-                !p.GetMethod.IsStatic &&
-                !p.GetMethod.HasParameters &&
+                p.GetMethod is {IsPublic: true, IsStatic: false, HasParameters: false} &&
                 CanPrint(p.PropertyType))
             .Cast<MemberReference>();
 
