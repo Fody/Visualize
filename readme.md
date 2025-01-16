@@ -1,6 +1,5 @@
 # <img src="/package_icon.png" height="30px"> Visualize.Fody
 
-[![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
 [![NuGet Status](https://img.shields.io/nuget/v/Visualize.Fody.svg)](https://www.nuget.org/packages/Visualize.Fody/)
 
 Adds debugger attributes to help visualize objects.
