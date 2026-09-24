@@ -1,15 +1,16 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 public static class AssertEx
 {
-    public static void DebuggerDisplayMessage(Type type, string message)
+    public static async Task DebuggerDisplayMessage(Type type, string message)
     {
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
 
-        var attribute = type.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == fullName);
+        var attribute = type.CustomAttributes.FirstOrDefault(_ => _.AttributeType.FullName == fullName);
 
-        Assert.NotNull(attribute);
+        await Assert.That(attribute).IsNotNull();
 
-        Assert.Equal(message, attribute.ConstructorArguments.First().Value.ToString());
+        var value = (string) attribute!.ConstructorArguments.First().Value!;
+        await Assert.That(value).IsEqualTo(message);
     }
 }

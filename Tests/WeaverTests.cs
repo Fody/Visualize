@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Fody;
+using TestResult = Fody.TestResult;
 #pragma warning disable CS0618
 
 public class WeaverTests
@@ -12,81 +13,85 @@ public class WeaverTests
         testResult = weaver.ExecuteTestRun("AssemblyToProcess.dll");
     }
 
-    [Fact]
-    public void EnumShouldNotGetDebuggerDisplay()
+    [Test]
+    public async Task EnumShouldNotGetDebuggerDisplay()
     {
-        var simpleEnumType = testResult.Assembly.GetType("SimpleEnum", true);
+        var simpleEnumType = testResult.Assembly.GetType("SimpleEnum", true)!;
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
-        Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
+        var hasAttribute = simpleEnumType.CustomAttributes.Any(_ => _.AttributeType.FullName == fullName);
+        await Assert.That(hasAttribute)
+            .IsFalse()
+            .Because($"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
-    [Fact]
-    public void InterfaceShouldNotGetDebuggerDisplay()
+    [Test]
+    public async Task InterfaceShouldNotGetDebuggerDisplay()
     {
-        var simpleEnumType = testResult.Assembly.GetType("AnInterface", true);
+        var simpleEnumType = testResult.Assembly.GetType("AnInterface", true)!;
         var fullName = typeof(DebuggerDisplayAttribute).FullName;
-        Assert.False(simpleEnumType.CustomAttributes.Any(t => t.AttributeType.FullName == fullName),
-            $"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
+        var hasAttribute = simpleEnumType.CustomAttributes.Any(_ => _.AttributeType.FullName == fullName);
+        await Assert.That(hasAttribute)
+            .IsFalse()
+            .Because($"Enums should not get decorated with '{nameof(DebuggerDisplayAttribute)}'.");
     }
 
-    [Fact]
-    public void ClassWithExistingAttributes()
+    [Test]
+    public async Task ClassWithExistingAttributes()
     {
-        var type = testResult.Assembly.GetType("ClassWithExistingAttributes", true);
+        var type = testResult.Assembly.GetType("ClassWithExistingAttributes", true)!;
 
-        AssertEx.DebuggerDisplayMessage(type, "Nothing");
+        await AssertEx.DebuggerDisplayMessage(type, "Nothing");
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithProperties()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithProperties"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithConst()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithConst"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithIndexor()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIndexor"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithDataAnnotations()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithDataAnnotations"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithIEnumerable()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerable"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithICollection()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithICollection"));
     }
 
-    [Fact]
+    [Test]
     public Task GenericClassWithIEnumerable()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithIEnumerable`1"));
     }
 
-    [Fact]
+    [Test]
     public Task GenericClassWithICollection()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.GenericClassWithICollection`1"));
     }
 
-    [Fact]
+    [Test]
     public Task ClassWithIEnumerableNotAttributed()
     {
         return Verify(Ildasm.Decompile(testResult.AssemblyPath, "AssemblyToProcess.ClassWithIEnumerableNotAttributed"));
