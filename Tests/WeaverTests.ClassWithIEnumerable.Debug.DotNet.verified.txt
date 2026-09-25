@@ -16,7 +16,7 @@
 .assembly extern System.Private.CoreLib
 {
 .publickeytoken = (7C EC 85 D7 BE A7 79 8E )                         // |.....y.
-.ver 7:0:0:0
+.ver 8:0:0:0
 }
 .assembly AssemblyToProcess
 {
